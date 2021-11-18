@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" stylesheets="@../../../../style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.output.MenuController">
+<VBox maxHeight="-Infinity" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" stylesheets="@../../../../style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.speiseplan.output.MenuController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -56,7 +56,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <image>
-                        <Image url="@../../../images/keinBild.png" />
+                        <Image url="@../image/keinBild.png" />
                      </image></ImageView>
                   <Button fx:id="deleteWedA" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
                      <cursor>
@@ -73,7 +73,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <image>
-                        <Image url="@../../../images/keinBild.png" />
+                        <Image url="@../image/keinBild.png" />
                      </image></ImageView>
                   <Button fx:id="deleteMonA" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
                      <cursor>
@@ -90,7 +90,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <image>
-                        <Image url="@../../../images/keinBild.png" />
+                        <Image url="@../image/keinBild.png" />
                      </image></ImageView>
                   <Button fx:id="deleteTueA" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
                      <cursor>
@@ -107,7 +107,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <image>
-                        <Image url="@../../../images/keinBild.png" />
+                        <Image url="@../image/keinBild.png" />
                      </image></ImageView>
                   <Button fx:id="deleteThuA" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
                      <cursor>
@@ -124,7 +124,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <image>
-                        <Image url="@../../../images/keinBild.png" />
+                        <Image url="@../image/keinBild.png" />
                      </image></ImageView>
                   <Button fx:id="deleteFriA" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
                      <cursor>
@@ -141,7 +141,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <image>
-                        <Image url="@../../../images/keinBild.png" />
+                        <Image url="@../image/keinBild.png" />
                      </image></ImageView>
                   <Button fx:id="deleteMonB" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
                      <cursor>
@@ -158,7 +158,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <image>
-                        <Image url="@../../../images/keinBild.png" />
+                        <Image url="@../image/keinBild.png" />
                      </image></ImageView>
                   <Button fx:id="deleteTueB" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
                      <cursor>
@@ -175,7 +175,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <image>
-                        <Image url="@../../../images/keinBild.png" />
+                        <Image url="@../image/keinBild.png" />
                      </image></ImageView>
                   <Button fx:id="deleteWedB" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
                      <cursor>
@@ -192,7 +192,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <image>
-                        <Image url="@../../../images/keinBild.png" />
+                        <Image url="@../image/keinBild.png" />
                      </image></ImageView>
                   <Button fx:id="deleteThuB" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
                      <cursor>
@@ -209,7 +209,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <image>
-                        <Image url="@../../../images/keinBild.png" />
+                        <Image url="@../image/keinBild.png" />
                      </image></ImageView>
                   <Button fx:id="deleteFriB" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
                      <cursor>

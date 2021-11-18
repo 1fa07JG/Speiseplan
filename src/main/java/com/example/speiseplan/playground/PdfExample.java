@@ -14,7 +14,7 @@ public class PdfExample {
         PdfDocument pdf = new PdfDocument(writer);
         // Creating a Document
         Document document = new Document(pdf);
-        String para1 = "This is a generated document";
+        String para1 = "This is a generated document!";
         String para2 = "This is a second paragraph!";
         // Creating Paragraphs
         Paragraph paragraph1 = new Paragraph(para1);
