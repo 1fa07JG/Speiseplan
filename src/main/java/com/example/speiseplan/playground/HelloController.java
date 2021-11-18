@@ -1,4 +1,4 @@
-package com.example.speiseplan;
+package com.example.speiseplan.playground;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

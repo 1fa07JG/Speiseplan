@@ -1,4 +1,4 @@
-package com.example.speiseplan;
+package com.example.speiseplan.playground;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

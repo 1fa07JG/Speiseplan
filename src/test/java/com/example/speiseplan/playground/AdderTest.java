@@ -1,4 +1,4 @@
-package com.example.speiseplan;
+package com.example.speiseplan.playground;
 
 import org.junit.jupiter.api.Test;
 
