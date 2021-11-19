@@ -241,6 +241,7 @@ public class MenuController {
         Day fri=new Day("Friday");
             Day[] days=new Day[]{mon,tue,wed,thu,fri};
             Week kw=new Week(days);
+            //write a method to get the Pdf file on week and reassign the button show preview to save the pdf
         terminate();}
     }
 
@@ -308,13 +309,7 @@ public class MenuController {
         grid.setStyle("-fx-background-color: #20e3e6;");
     }
 
-
-    String getFood(TextField food) {
-        return food.getText();
-    }
-
-
-
+    // integrate pictures into the meal class, so you can add Pictures to the meal class
     String getPicture(ImageView img) {
         return img.getImage().getUrl();
     }
