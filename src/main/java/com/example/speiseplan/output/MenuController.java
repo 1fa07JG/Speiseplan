@@ -207,13 +207,12 @@ public class MenuController {
         String s=text.getText();
         s=s.replace(',','.');
         s=s.replaceAll("[\\p{L}+*~#%&$§?!@-]", "0");
-        double price=Double.parseDouble(s);
-        return price;
+        return Double.parseDouble(s);
     }
 
     @FXML
     void save(){
-        if (checkInput()==true){
+        if (checkInput()){
 
         Meal monA =new Meal(txtAreaFoodMonA.getText());
         monA.setPrice(getPrice(priceMonA));
