@@ -16,6 +16,7 @@ import com.itextpdf.layout.element.Table;
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 
+@SuppressWarnings("ClassEscapesDefinedScope")
 public class CreatePdfMenu {
 
     public static void producePdfMenu(Week kw) throws FileNotFoundException, MalformedURLException {
@@ -51,11 +52,11 @@ public class CreatePdfMenu {
         for (int i = 0; i < 2; i++) {
 
             char menu = (char) ('A' + i);
-            Cell cellMenue = new Cell();   // Creating a cell
-            String paraMenue = "Menü " + menu;
-            Paragraph paragraph10 = new Paragraph(paraMenue);
-            cellMenue.add(paragraph10);         // Adding content to the cell
-            table.addCell(cellMenue);      // Adding cell to the table
+            Cell cellMenu = new Cell();   // Creating a cell
+            String paraMenu = "Menü " + menu;
+            Paragraph paragraph10 = new Paragraph(paraMenu);
+            cellMenu.add(paragraph10);         // Adding content to the cell
+            table.addCell(cellMenu);      // Adding cell to the table
 
 
             for (int y = 0; y < 5; y++) {

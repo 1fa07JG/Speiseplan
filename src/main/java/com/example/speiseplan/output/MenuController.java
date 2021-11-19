@@ -228,7 +228,7 @@ public class MenuController {
         wedA.setPrice(getPrice(priceWedA));
         Meal wedB =new Meal(txtAreaFoodWedB.getText());
         wedB.setPrice(getPrice(priceWedB));
-        Day wed=new Day("Wendsday");
+        Day wed=new Day("Wednesday");
         Meal thuA =new Meal(txtAreaFoodThuA.getText());
         thuA.setPrice(getPrice(priceThuA));
         Meal thuB =new Meal(txtAreaFoodThuB.getText());
