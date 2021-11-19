@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Date;
 
 public class MenuApplication extends Application {
     @Override
@@ -16,10 +15,6 @@ public class MenuApplication extends Application {
         stage.setTitle("Menu");
         stage.setScene(scene);
         stage.show();
-    }
-
-    public void generate(Date date, String name, double price, String bildLink){
-        System.out.println("Menü erzeugt");
     }
 
 

@@ -80,11 +80,11 @@ public class CreatePdfMenu {
 
         ImageData data;
         try {
-            String imageFile = "./src/main/resources/image/" + getReplace(name) + ".jpg";
+            String imageFile = "./src/main/resources/com/example/speiseplan/image/" + getReplace(name) + ".jpg";
             data = ImageDataFactory.create(imageFile);
 
         } catch (Exception FileNotFoundException) {
-            data = ImageDataFactory.create("./src/main/resources/image/Exception.jpg");
+            data = ImageDataFactory.create("./src/main/resources/com/example/speiseplan/image/Exception.jpg");
         }
         Image img = new Image(data);
         cell.add(img.setAutoScale(true));

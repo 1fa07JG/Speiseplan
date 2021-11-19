@@ -1,5 +1,8 @@
 package com.example.speiseplan.output;
 
+import com.example.speiseplan.logic.Day;
+import com.example.speiseplan.logic.Meal;
+import com.example.speiseplan.logic.Week;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -211,34 +214,34 @@ public class MenuController {
     @FXML
     void save(){
         if (checkInput()==true){
-        /*
+
         Meal monA =new Meal(txtAreaFoodMonA.getText());
         monA.setPrice(getPrice(priceMonA));
         Meal monB =new Meal(txtAreaFoodMonB.getText());
         monB.setPrice(getPrice(priceMonB));
-        Day mon=new Day(Monday);
+        Day mon=new Day("Monday");
         Meal tueA =new Meal(txtAreaFoodTueA.getText());
         tueA.setPrice(getPrice(priceTueA));
         Meal tueB =new Meal(txtAreaFoodTueB.getText());
         tueB.setPrice(getPrice(priceTueB));
-        Day tue=new Day(Tuesday);
+        Day tue=new Day("Tuesday");
         Meal wedA =new Meal(txtAreaFoodWedA.getText());
-        wed.setPrice(getPrice(priceWedA));
+        wedA.setPrice(getPrice(priceWedA));
         Meal wedB =new Meal(txtAreaFoodWedB.getText());
         wedB.setPrice(getPrice(priceWedB));
-        Day wed=new Day(Wendsday);
+        Day wed=new Day("Wendsday");
         Meal thuA =new Meal(txtAreaFoodThuA.getText());
         thuA.setPrice(getPrice(priceThuA));
         Meal thuB =new Meal(txtAreaFoodThuB.getText());
         thuB.setPrice(getPrice(priceThuB));
-        Day thu=new Day(Thursday);
+        Day thu=new Day("Thursday");
         Meal friA =new Meal(txtAreaFoodFriA.getText());
         friA.setPrice(getPrice(priceFriA));
         Meal friB =new Meal(txtAreaFoodFriB.getText());
         friB.setPrice(getPrice(priceFriB));
-        Day fri=new Day(Friday);
-        Day []d=new Day[mon,tue,wed,thu,fri];
-    Week kw=new Week(days);*/
+        Day fri=new Day("Friday");
+            Day[] days=new Day[]{mon,tue,wed,thu,fri};
+            Week kw=new Week(days);
         terminate();}
     }
 
