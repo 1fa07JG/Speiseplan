@@ -2,6 +2,8 @@ package com.example.speiseplan.logic;
 
 import java.util.ArrayList;
 
+import static com.example.speiseplan.logic.Helper.getReplace;
+
 public class Meal {
 
     String name;
@@ -14,12 +16,19 @@ public class Meal {
 
         name = n;
         price = -99.99;
-        picture =n;
+        picture ="./src/main/resources/com/example/speiseplan/image/" + getReplace(n) + ".jpg";
     }
     public Meal(String n, double _price) {
 
         this(n);
         this.price = _price;
+    }
+
+    public Meal(String n, double price_,String pic) {
+
+        this(n);
+        this.price = price_;
+        picture=pic;
     }
 
     int countOrders() {
