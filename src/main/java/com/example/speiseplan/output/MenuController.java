@@ -388,6 +388,31 @@ public class MenuController {
         refImage.setImage(noImage);
         System.out.println("Called handler deleteMenu()");
     }
+    @FXML
+    private void setContent(ActionEvent event) {
+        txtAreaFoodMonA.setText("Dampfnudel");
+        priceMonA.setText("3.9");
+        txtAreaFoodMonB.setText("Aal");
+        priceMonB.setText("3.9");
+        txtAreaFoodTueA.setText("Kaiserschmarn");
+        priceTueA.setText("3.9");
+        txtAreaFoodTueB.setText("Karpfen");
+        priceTueB.setText("3.9");
+        txtAreaFoodWedA.setText("Semmelknödel");
+        priceWedA.setText("3.9");
+        txtAreaFoodWedB.setText("Forelle");
+        priceWedB.setText("3.9");
+        txtAreaFoodThuA.setText("Käseplatte");
+        priceThuA.setText("3.9");
+        txtAreaFoodThuB.setText("Schweinsbraten");
+        priceThuB.setText("3.9");
+        txtAreaFoodFriA.setText("Bratkartofelen");
+        priceFriA.setText("3.9");
+        txtAreaFoodFriB.setText("Renke");
+        priceFriB.setText("3.9");
+
+
+    }
 
     @FXML
     void terminate() {
