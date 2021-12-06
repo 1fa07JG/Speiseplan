@@ -261,6 +261,7 @@ public class MenuController {
         Day fri=new Day("Friday");
         Day[] days=new Day[]{mon,tue,wed,thu,fri};
         Week kw=new Week(days);
+        //System.out.println(kw.printMenu());
         return kw;
     }
 
