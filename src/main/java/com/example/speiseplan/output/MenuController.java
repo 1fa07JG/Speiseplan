@@ -198,6 +198,19 @@ public class MenuController {
     }
 
     @FXML
+    void createPdf(ActionEvent event) throws MalformedURLException, FileNotFoundException {
+        if (checkInput()){
+
+            Week week=getContent();
+            System.out.println(week.printMenu());
+            //CreatePdfMenu.producePdfMenu(week);
+
+            //write a method to get the Pdf file on week and reassign the button show preview to save the pdf
+            }
+
+    }
+
+    @FXML
     void getWhite(KeyEvent event) {
         TextArea t= ((TextArea) event.getSource());
         t.getStylesheets().remove("/failure.css");

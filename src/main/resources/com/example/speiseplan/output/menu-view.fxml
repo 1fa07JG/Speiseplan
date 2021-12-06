@@ -243,7 +243,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button layoutX="694.0" layoutY="14.0" mnemonicParsing="false" text="Show Preview">
+            <Button layoutX="694.0" layoutY="14.0" mnemonicParsing="false" onAction="#createPdf" text="Pdf erzeugen">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>

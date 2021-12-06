@@ -1,5 +1,10 @@
 package com.example.speiseplan.logic;
 
+import com.example.speiseplan.output.CreatePdfMenu;
+
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
+
 public class Week {
 
     public Day[] days;
@@ -10,6 +15,10 @@ public class Week {
         for (int i = 0; i < 5; i++) {
             days[i].setWeekdayIndex(i);
         }
+    }
+
+    public  void printPdf() throws MalformedURLException, FileNotFoundException {
+        CreatePdfMenu.producePdfMenu(this);
     }
 
     public String printMenu() {
