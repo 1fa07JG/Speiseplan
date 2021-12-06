@@ -6,6 +6,7 @@ public class Meal {
 
     String name;
     double price;
+    String picture;
 
     ArrayList<Person> customers = new ArrayList<>(0);
 
@@ -13,6 +14,7 @@ public class Meal {
 
         name = n;
         price = 3.9;
+        picture =n;
     }
 
     int countOrders() {
