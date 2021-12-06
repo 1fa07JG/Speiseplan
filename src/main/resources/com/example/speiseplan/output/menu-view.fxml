@@ -51,7 +51,7 @@
             <Label text="Mittwoch" GridPane.columnIndex="3" />
             <Label text="Donnerstag" GridPane.columnIndex="4" />
             <Label text="Freitag" GridPane.columnIndex="5" />
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <VBox maxHeight="310.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <children>
                   <TextArea fx:id="txtAreaFoodWedA" maxHeight="50.0" maxWidth="160.0" onKeyTyped="#getWhite" prefHeight="200.0" prefWidth="160.0" promptText="Gericht" />
                   <TextField fx:id="priceWedA" maxWidth="160.0" promptText="Preis" />
