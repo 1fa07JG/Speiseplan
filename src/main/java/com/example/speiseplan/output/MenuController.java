@@ -234,31 +234,26 @@ public class MenuController {
     }
 
     private Week getContent() {
-        Meal monA =new Meal(txtAreaFoodMonA.getText());
-        monA.setPrice(getPrice(priceMonA));
-        Meal monB =new Meal(txtAreaFoodMonB.getText());
-        monB.setPrice(getPrice(priceMonB));
-        Day mon=new Day("Monday");
-        Meal tueA =new Meal(txtAreaFoodTueA.getText());
-        tueA.setPrice(getPrice(priceTueA));
-        Meal tueB =new Meal(txtAreaFoodTueB.getText());
-        tueB.setPrice(getPrice(priceTueB));
-        Day tue=new Day("Tuesday");
-        Meal wedA =new Meal(txtAreaFoodWedA.getText());
-        wedA.setPrice(getPrice(priceWedA));
-        Meal wedB =new Meal(txtAreaFoodWedB.getText());
-        wedB.setPrice(getPrice(priceWedB));
-        Day wed=new Day("Wednesday");
-        Meal thuA =new Meal(txtAreaFoodThuA.getText());
-        thuA.setPrice(getPrice(priceThuA));
-        Meal thuB =new Meal(txtAreaFoodThuB.getText());
-        thuB.setPrice(getPrice(priceThuB));
-        Day thu=new Day("Thursday");
-        Meal friA =new Meal(txtAreaFoodFriA.getText());
-        friA.setPrice(getPrice(priceFriA));
-        Meal friB =new Meal(txtAreaFoodFriB.getText());
-        friB.setPrice(getPrice(priceFriB));
-        Day fri=new Day("Friday");
+        Meal monA =new Meal(txtAreaFoodMonA.getText(), getPrice(priceMonA));
+        Meal monB =new Meal(txtAreaFoodMonB.getText(), getPrice(priceMonB));
+        Day mon=new Day("Monday", monA, monB);
+
+        Meal tueA =new Meal(txtAreaFoodTueA.getText(),getPrice(priceTueA));
+        Meal tueB =new Meal(txtAreaFoodTueB.getText(),getPrice(priceTueB));
+        Day tue=new Day("Tuesday",tueA,tueB);
+
+        Meal wedA =new Meal(txtAreaFoodWedA.getText(),getPrice(priceWedA));
+        Meal wedB =new Meal(txtAreaFoodWedB.getText(),getPrice(priceWedB));
+        Day wed=new Day("Wednesday",wedA,wedB);
+
+        Meal thuA =new Meal(txtAreaFoodThuA.getText(),getPrice(priceThuA));
+        Meal thuB =new Meal(txtAreaFoodThuB.getText(),getPrice(priceThuB));
+        Day thu=new Day("Thursday",thuA,thuB);
+
+        Meal friA =new Meal(txtAreaFoodFriA.getText(),getPrice(priceFriA));
+        Meal friB =new Meal(txtAreaFoodFriB.getText(),getPrice(priceFriB));
+        Day fri=new Day("Friday",friA,friB);
+
         Day[] days=new Day[]{mon,tue,wed,thu,fri};
         Week kw=new Week(days);
         //System.out.println(kw.printMenu());

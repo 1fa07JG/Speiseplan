@@ -17,6 +17,13 @@ public class Day {
         name = n;
     }
 
+    public Day(String n, Meal a, Meal b) {
+        this(n);
+        this.addMeal(a);
+        this.addMeal(b);
+    }
+
+
     public void addMeal(Meal newFood) {
         foodList.add(newFood);
     }

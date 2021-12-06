@@ -13,8 +13,13 @@ public class Meal {
     public Meal(String n) {
 
         name = n;
-        price = 3.9;
+        price = -99.99;
         picture =n;
+    }
+    public Meal(String n, double _price) {
+
+        this(n);
+        this.price = _price;
     }
 
     int countOrders() {
