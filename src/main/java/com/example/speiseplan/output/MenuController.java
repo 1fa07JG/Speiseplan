@@ -27,6 +27,7 @@ import static com.example.speiseplan.output.CreatePdfMenu.producePdfMenu;
 
 public class MenuController {
 
+    //TODO variable hinzufügen in der die bild Url eingetragen wird die Suchfunktion aus der Löschen Methode verwenden
     @FXML
     private Button deleteMonA;
 
@@ -237,30 +238,29 @@ public class MenuController {
 
     //sammelt die Eingabe daten und Bringt sie in ein Format das die Logic Klassen verabeiten können
     private Week getContent() {
-        Meal monA =new Meal(txtAreaFoodMonA.getText(), getPrice(priceMonA));
-        Meal monB =new Meal(txtAreaFoodMonB.getText(), getPrice(priceMonB));
+        Meal monA =new Meal(txtAreaFoodMonA.getText(), getPrice(priceMonA),getPicture(picMonA));
+        Meal monB =new Meal(txtAreaFoodMonB.getText(), getPrice(priceMonB),getPicture(picMonB));
         Day mon=new Day("Monday", monA, monB);
 
-        Meal tueA =new Meal(txtAreaFoodTueA.getText(),getPrice(priceTueA));
-        Meal tueB =new Meal(txtAreaFoodTueB.getText(),getPrice(priceTueB));
+        Meal tueA =new Meal(txtAreaFoodTueA.getText(),getPrice(priceTueA),getPicture(picTueA));
+        Meal tueB =new Meal(txtAreaFoodTueB.getText(),getPrice(priceTueB),getPicture(picTueB));
         Day tue=new Day("Tuesday",tueA,tueB);
 
-        Meal wedA =new Meal(txtAreaFoodWedA.getText(),getPrice(priceWedA));
-        Meal wedB =new Meal(txtAreaFoodWedB.getText(),getPrice(priceWedB));
+        Meal wedA =new Meal(txtAreaFoodWedA.getText(),getPrice(priceWedA),getPicture(picWedA));
+        Meal wedB =new Meal(txtAreaFoodWedB.getText(),getPrice(priceWedB),getPicture(picWedB));
         Day wed=new Day("Wednesday",wedA,wedB);
 
-        Meal thuA =new Meal(txtAreaFoodThuA.getText(),getPrice(priceThuA));
-        Meal thuB =new Meal(txtAreaFoodThuB.getText(),getPrice(priceThuB));
+        Meal thuA =new Meal(txtAreaFoodThuA.getText(),getPrice(priceThuA),getPicture(picThuA));
+        Meal thuB =new Meal(txtAreaFoodThuB.getText(),getPrice(priceThuB),getPicture(picThuB));
         Day thu=new Day("Thursday",thuA,thuB);
 
-        Meal friA =new Meal(txtAreaFoodFriA.getText(),getPrice(priceFriA));
-        Meal friB =new Meal(txtAreaFoodFriB.getText(),getPrice(priceFriB));
+        Meal friA =new Meal(txtAreaFoodFriA.getText(),getPrice(priceFriA),getPicture(picFriA));
+        Meal friB =new Meal(txtAreaFoodFriB.getText(),getPrice(priceFriB),getPicture(picFriB));
         Day fri=new Day("Friday",friA,friB);
 
         Day[] days=new Day[]{mon,tue,wed,thu,fri};
-        Week kw=new Week(days);
-        //System.out.println(kw.printMenu());
-        return kw;
+
+        return new Week(days);
     }
 
     //findet und korigirt eingaben die das Programm nicht verarbeiten kann.
@@ -328,8 +328,9 @@ public class MenuController {
     }
 
     // integrate pictures into the meal class, so you can add Pictures to the meal class
-    String getPicture(ImageView img) {
-        return img.getImage().getUrl();
+    String getPicture(ImageView iv) {
+        System.out.println(iv.getImage().getUrl());
+        return iv.getImage().getUrl();
     }
 
     @FXML

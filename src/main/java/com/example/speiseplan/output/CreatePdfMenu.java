@@ -61,7 +61,7 @@ public class CreatePdfMenu {
 
             for (int y = 0; y < 5; y++) {
                 Meal shortCut = kw.days[y].getMeals().get(i);
-                table.addCell(createMealEntry(shortCut.getName(), shortCut.getPrice()));
+                table.addCell(createMealEntry(shortCut.getName(), shortCut.getPrice(),shortCut.getPicture()));
             }
         }
         document.add(table);
@@ -73,7 +73,7 @@ public class CreatePdfMenu {
 
     }
 
-    private static Cell createMealEntry(String name, double price) throws MalformedURLException {
+    private static Cell createMealEntry(String name, double price,String picture) throws MalformedURLException {
         Cell cell = new Cell();
 
         Paragraph beschreibung = new Paragraph(name + "\n" + price + "€");
@@ -81,7 +81,7 @@ public class CreatePdfMenu {
 
         ImageData data;
         try {
-            String imageFile = "./src/main/resources/com/example/speiseplan/image/" + getReplace(name) + ".jpg";
+            String imageFile = picture;
             data = ImageDataFactory.create(imageFile);
 
         } catch (Exception FileNotFoundException) {
@@ -95,15 +95,5 @@ public class CreatePdfMenu {
     }
 
 
-    private static String getReplace(String para) {
-        String replace = para.replace(' ', '_');
-        replace = replace.replace("ü", "ue");
-        replace = replace.replace("ä", "ae");
-        replace = replace.replace("ö", "oe");
-        replace = replace.replace("ß", "ss");
-        replace = replace.replace("Ü", "Ue");
-        replace = replace.replace("Ä", "Ae");
-        replace = replace.replace("Ö", "Oe");
-        return replace;
-    }
+
 }

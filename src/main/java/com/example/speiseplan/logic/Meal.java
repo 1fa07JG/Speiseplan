@@ -54,6 +54,10 @@ public class Meal {
         return name;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
     public ArrayList<Person> getCustomers() {
 
         return customers;
