@@ -204,14 +204,15 @@ public class MenuController {
         if (checkInput()){
 
             Week week=getContent();
-            System.out.println(week.printMenu());
-            //CreatePdfMenu.producePdfMenu(week);
+            //System.out.println(week.printMenu());
+            producePdfMenu(week);
 
             //write a method to get the Pdf file on week and reassign the button show preview to save the pdf
             }
 
     }
 
+    //entfernt Fehler Markierungen
     @FXML
     void getWhite(KeyEvent event) {
         TextArea t= ((TextArea) event.getSource());
@@ -234,6 +235,7 @@ public class MenuController {
         terminate();}
     }
 
+    //sammelt die Eingabe daten und Bringt sie in ein Format das die Logic Klassen verabeiten können
     private Week getContent() {
         Meal monA =new Meal(txtAreaFoodMonA.getText(), getPrice(priceMonA));
         Meal monB =new Meal(txtAreaFoodMonB.getText(), getPrice(priceMonB));
@@ -261,7 +263,7 @@ public class MenuController {
         return kw;
     }
 
-
+    //findet und korigirt eingaben die das Programm nicht verarbeiten kann.
     @FXML
     boolean checkInput() {
         boolean ready=true;
@@ -345,7 +347,7 @@ public class MenuController {
 
         source.setImage(image);
     }
-
+    //Löscht ein Menü
     @FXML
     void deleteMenu(ActionEvent event) throws FileNotFoundException {
 
@@ -372,6 +374,7 @@ public class MenuController {
         refImage.setImage(noImage);
         System.out.println("Called handler deleteMenu()");
     }
+    // Gibt Testdaten ein um nicht jedes mal Standard Testdaten einzugeben
     @FXML
     private void setContent(ActionEvent event) {
         txtAreaFoodMonA.setText("Dampfnudel");
@@ -386,9 +389,9 @@ public class MenuController {
         priceWedA.setText("3.9");
         txtAreaFoodWedB.setText("Forelle");
         priceWedB.setText("3.9");
-        txtAreaFoodThuA.setText("Käseplatte");
+        txtAreaFoodThuA.setText("Brotzeit");
         priceThuA.setText("3.9");
-        txtAreaFoodThuB.setText("Schweinsbraten");
+        txtAreaFoodThuB.setText("Obatzter");
         priceThuB.setText("3.9");
         txtAreaFoodFriA.setText("Bratkartofelen");
         priceFriA.setText("3.9");
