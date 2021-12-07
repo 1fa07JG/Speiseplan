@@ -346,7 +346,7 @@ public class MenuController {
 
     @FXML
     void setHoliday(ActionEvent event) throws FileNotFoundException {
-        ArrayList<String> name = new ArrayList<>(Arrays.asList("freeMon", null, "freeTue", null, "freeWedA", null, "freeThu", null, "freeFri"));
+        ArrayList<String> name = new ArrayList<>(Arrays.asList("freeMon", null, "freeTue", null, "freeWed", null, "freeThu", null, "freeFri"));
 
 
         ArrayList<TextArea> textAreas = new ArrayList<>(Arrays.asList(txtAreaFoodMonA, txtAreaFoodMonB,
