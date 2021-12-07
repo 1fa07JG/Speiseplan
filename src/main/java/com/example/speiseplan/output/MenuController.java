@@ -344,12 +344,6 @@ public class MenuController {
         grid.setStyle("-fx-background-color: #20e3e6;");
     }
 
-    // integrate pictures into the meal class, so you can add Pictures to the meal class
-    String getPicture(ImageView iv) {
-        System.out.println(iv.getImage().getUrl());
-        return iv.getImage().getUrl();
-    }
-
     @FXML
     void setPicture(MouseEvent event) throws IOException {
         // imageChooser einfügen
