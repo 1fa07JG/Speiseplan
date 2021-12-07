@@ -61,7 +61,7 @@ public class CreatePdfMenu {
 
             for (int y = 0; y < 5; y++) {
                 Meal shortCut = kw.days[y].getMeals().get(i);
-                table.addCell(createMealEntry(shortCut.getName(), shortCut.getPrice(),shortCut.getPicture()));
+                table.addCell(createMealEntry(shortCut.getName(), shortCut.getPrice(), shortCut.getPicture()));
             }
         }
         document.add(table);
@@ -73,7 +73,7 @@ public class CreatePdfMenu {
 
     }
 
-    private static Cell createMealEntry(String name, double price,String picture) throws MalformedURLException {
+    private static Cell createMealEntry(String name, double price, String picture) throws MalformedURLException {
         Cell cell = new Cell();
 
         Paragraph beschreibung = new Paragraph(name + "\n" + price + "€");
@@ -92,7 +92,6 @@ public class CreatePdfMenu {
         return cell;
 
     }
-
 
 
 }

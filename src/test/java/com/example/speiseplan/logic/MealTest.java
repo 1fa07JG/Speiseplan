@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 class MealTest {
     Person lucretia = new Person("Borgia", "Lucretia");
     Person cesare = new Person("Borgia", "Cesare");
-    Meal bread = new Meal("Brot",3.9,"");
-    Meal soup = new Meal("Suppe",5,"");
+    Meal bread = new Meal("Brot", 3.9, "");
+    Meal soup = new Meal("Suppe", 5, "");
 
     @Test
     void testGiveAffected() {

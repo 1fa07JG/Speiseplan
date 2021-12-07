@@ -17,7 +17,7 @@ public class Week {
         }
     }
 
-    public  void printPdf() throws MalformedURLException, FileNotFoundException {
+    public void printPdf() throws MalformedURLException, FileNotFoundException {
         CreatePdfMenu.producePdfMenu(this);
     }
 

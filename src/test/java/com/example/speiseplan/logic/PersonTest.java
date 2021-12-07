@@ -6,16 +6,16 @@ import org.junit.jupiter.api.Test;
 
 class PersonTest {
 
-    public Meal lunch0 = new Meal("Fasan im Federkleid",6,"./src/main/resources/com/example/speiseplan/image/Fasan_im_Federkleid.jpg");
-    public Meal lunch1 = new Meal("Knödel in Schokoladen Soße",8,"./src/main/resources/com/example/speiseplan/image/Marillenknoedel.jpg");
-    public Meal lunch2 = new Meal("Fish and Chips",3.9,"./src/main/resources/com/example/speiseplan/image/Fish_and_Chips.jpg");
-    public Meal lunch3 = new Meal("Bratkartoffeln",5,"./src/main/resources/com/example/speiseplan/image/Bratkartoffeln.jpg");
-    public Meal lunch4 = new Meal("Schwan im Federkleid",3.9,"./src/main/resources/com/example/speiseplan/image/Schwan_im_Federkleid.jpg");
-    public Meal lunch5 = new Meal("Risotto",2.5,"./src/main/resources/com/example/speiseplan/image/Risotto.jpg");
-    public Meal lunch6 = new Meal("Hirschrücken mit chili garniert",7,"./src/main/resources/com/example/speiseplan/image/Rehruecken.jpg");
-    public Meal lunch7 = new Meal("Zuckerschloss",3.9,"./src/main/resources/com/example/speiseplan/image/Marzipan_Fruechte.jpg");
-    public Meal lunch8 = new Meal("Pastete vom Narwhal",3.9,"./src/main/resources/com/example/speiseplan/image/Filet_vom_Narwal.jpg");
-    public Meal lunch9 = new Meal("Kaiserschmarrn",4.5,"./src/main/resources/com/example/speiseplan/image/Kaiserschmarrn.jpg");
+    public Meal lunch0 = new Meal("Fasan im Federkleid", 6, "./src/main/resources/com/example/speiseplan/image/Fasan_im_Federkleid.jpg");
+    public Meal lunch1 = new Meal("Knödel in Schokoladen Soße", 8, "./src/main/resources/com/example/speiseplan/image/Marillenknoedel.jpg");
+    public Meal lunch2 = new Meal("Fish and Chips", 3.9, "./src/main/resources/com/example/speiseplan/image/Fish_and_Chips.jpg");
+    public Meal lunch3 = new Meal("Bratkartoffeln", 5, "./src/main/resources/com/example/speiseplan/image/Bratkartoffeln.jpg");
+    public Meal lunch4 = new Meal("Schwan im Federkleid", 3.9, "./src/main/resources/com/example/speiseplan/image/Schwan_im_Federkleid.jpg");
+    public Meal lunch5 = new Meal("Risotto", 2.5, "./src/main/resources/com/example/speiseplan/image/Risotto.jpg");
+    public Meal lunch6 = new Meal("Hirschrücken mit chili garniert", 7, "./src/main/resources/com/example/speiseplan/image/Rehruecken.jpg");
+    public Meal lunch7 = new Meal("Zuckerschloss", 3.9, "./src/main/resources/com/example/speiseplan/image/Marzipan_Fruechte.jpg");
+    public Meal lunch8 = new Meal("Pastete vom Narwhal", 3.9, "./src/main/resources/com/example/speiseplan/image/Filet_vom_Narwal.jpg");
+    public Meal lunch9 = new Meal("Kaiserschmarrn", 4.5, "./src/main/resources/com/example/speiseplan/image/Kaiserschmarrn.jpg");
 
     public Day monday = new Day("Montag");
     public Day tuesday = new Day("Dienstag");
@@ -152,8 +152,8 @@ class PersonTest {
     }
 
     private Day createEinTag() {
-        Meal forelle = new Meal("Forelle",5,"");
-        Meal steak = new Meal("Steak",3.5,"");
+        Meal forelle = new Meal("Forelle", 5, "");
+        Meal steak = new Meal("Steak", 3.5, "");
         Day einTag = new Day("Neujahr");
         einTag.addMeal(forelle);
         einTag.addMeal(steak);
