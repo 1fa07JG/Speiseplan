@@ -81,8 +81,7 @@ public class CreatePdfMenu {
 
         ImageData data;
         try {
-            String imageFile = picture;
-            data = ImageDataFactory.create(imageFile);
+            data = ImageDataFactory.create(picture);
 
         } catch (Exception FileNotFoundException) {
             data = ImageDataFactory.create("./src/main/resources/com/example/speiseplan/image/Exception.jpg");

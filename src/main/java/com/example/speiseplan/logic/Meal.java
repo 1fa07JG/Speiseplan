@@ -10,11 +10,11 @@ public class Meal {
 
     ArrayList<Person> customers = new ArrayList<>(0);
 
-    public Meal(String n, double price_,String pic) {
+    public Meal(String n, double price_, String pic) {
 
         name = n;
         price = price_;
-        picture=pic;
+        picture = pic;
     }
 
     int countOrders() {
