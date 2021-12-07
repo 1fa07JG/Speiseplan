@@ -46,191 +46,258 @@
             <RowConstraints maxHeight="400.0" minHeight="10.0" prefHeight="310.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label alignment="CENTER" text="Montag" GridPane.columnIndex="1" />
-            <Label text="Dienstag" GridPane.columnIndex="2" />
-            <Label text="Mittwoch" GridPane.columnIndex="3" />
-            <Label text="Donnerstag" GridPane.columnIndex="4" />
-            <Label text="Freitag" GridPane.columnIndex="5" />
             <VBox maxHeight="310.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <children>
                   <TextArea fx:id="txtAreaFoodWedA" maxHeight="50.0" maxWidth="160.0" onKeyTyped="#getWhite" prefHeight="200.0" prefWidth="160.0" promptText="Gericht" />
                   <TextField fx:id="priceWedA" maxWidth="160.0" promptText="Preis" />
-                  <ImageView fx:id="picWedA" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#setPicture" pickOnBounds="true" preserveRatio="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <image>
-                        <Image url="@../image/keinBild.png" />
-                     </image></ImageView>
-                  <Button fx:id="deleteWedA" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                  <ImageView fx:id="picWedA" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#choosePicture"
+                             pickOnBounds="true" preserveRatio="true">
+                      <cursor>
+                          <Cursor fx:constant="HAND"/>
+                      </cursor>
+                      <image>
+                          <Image url="@../image/keinBild.png"/>
+                      </image>
+                  </ImageView>
+                   <Button fx:id="deleteWedA" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                   </Button>
                </children>
             </VBox>
             <VBox maxHeight="310.0" prefHeight="310.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <TextArea fx:id="txtAreaFoodMonA" maxHeight="50.0" maxWidth="160.0" onKeyTyped="#getWhite" prefHeight="200.0" prefWidth="160.0" promptText="Gericht" />
                   <TextField fx:id="priceMonA" maxWidth="160.0" promptText="Preis" />
-                  <ImageView fx:id="picMonA" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#setPicture" pickOnBounds="true" preserveRatio="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <image>
-                        <Image url="@../image/keinBild.png" />
-                     </image></ImageView>
-                  <Button fx:id="deleteMonA" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                   <ImageView fx:id="picMonA" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#choosePicture"
+                              pickOnBounds="true" preserveRatio="true">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                       <image>
+                           <Image url="@../image/keinBild.png"/>
+                       </image>
+                   </ImageView>
+                   <Button fx:id="deleteMonA" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                   </Button>
                </children>
             </VBox>
             <VBox maxHeight="310.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
                   <TextArea fx:id="txtAreaFoodTueA" maxHeight="50.0" maxWidth="160.0" onKeyTyped="#getWhite" prefHeight="200.0" prefWidth="160.0" promptText="Gericht" />
                   <TextField fx:id="priceTueA" maxWidth="160.0" promptText="Preis" />
-                  <ImageView fx:id="picTueA" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#setPicture" pickOnBounds="true" preserveRatio="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <image>
-                        <Image url="@../image/keinBild.png" />
-                     </image></ImageView>
-                  <Button fx:id="deleteTueA" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                   <ImageView fx:id="picTueA" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#choosePicture"
+                              pickOnBounds="true" preserveRatio="true">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                       <image>
+                           <Image url="@../image/keinBild.png"/>
+                       </image>
+                   </ImageView>
+                   <Button fx:id="deleteTueA" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                   </Button>
                </children>
             </VBox>
             <VBox maxHeight="310.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <children>
                   <TextArea fx:id="txtAreaFoodThuA" maxHeight="50.0" maxWidth="160.0" onKeyTyped="#getWhite" prefHeight="200.0" prefWidth="160.0" promptText="Gericht" />
                   <TextField fx:id="priceThuA" maxWidth="160.0" promptText="Preis" />
-                  <ImageView fx:id="picThuA" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#setPicture" pickOnBounds="true" preserveRatio="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <image>
-                        <Image url="@../image/keinBild.png" />
-                     </image></ImageView>
-                  <Button fx:id="deleteThuA" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                   <ImageView fx:id="picThuA" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#choosePicture"
+                              pickOnBounds="true" preserveRatio="true">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                       <image>
+                           <Image url="@../image/keinBild.png"/>
+                       </image>
+                   </ImageView>
+                   <Button fx:id="deleteThuA" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                   </Button>
                </children>
             </VBox>
             <VBox maxHeight="310.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <children>
                   <TextArea fx:id="txtAreaFoodFriA" maxHeight="50.0" maxWidth="160.0" onKeyTyped="#getWhite" prefHeight="200.0" prefWidth="160.0" promptText="Gericht" />
                   <TextField fx:id="priceFriA" maxWidth="160.0" promptText="Preis" />
-                  <ImageView fx:id="picFriA" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#setPicture" pickOnBounds="true" preserveRatio="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <image>
-                        <Image url="@../image/keinBild.png" />
-                     </image></ImageView>
-                  <Button fx:id="deleteFriA" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                   <ImageView fx:id="picFriA" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#choosePicture"
+                              pickOnBounds="true" preserveRatio="true">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                       <image>
+                           <Image url="@../image/keinBild.png"/>
+                       </image>
+                   </ImageView>
+                   <Button fx:id="deleteFriA" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                   </Button>
                </children>
             </VBox>
             <VBox maxHeight="310.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <TextArea fx:id="txtAreaFoodMonB" maxHeight="50.0" maxWidth="160.0" onKeyTyped="#getWhite" prefHeight="200.0" prefWidth="160.0" promptText="Gericht" />
                   <TextField fx:id="priceMonB" maxWidth="160.0" promptText="Preis" />
-                  <ImageView fx:id="picMonB" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#setPicture" pickOnBounds="true" preserveRatio="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <image>
-                        <Image url="@../image/keinBild.png" />
-                     </image></ImageView>
-                  <Button fx:id="deleteMonB" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                   <ImageView fx:id="picMonB" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#choosePicture"
+                              pickOnBounds="true" preserveRatio="true">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                       <image>
+                           <Image url="@../image/keinBild.png"/>
+                       </image>
+                   </ImageView>
+                   <Button fx:id="deleteMonB" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                   </Button>
                </children>
             </VBox>
             <VBox maxHeight="310.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
                   <TextArea fx:id="txtAreaFoodTueB" maxHeight="50.0" maxWidth="160.0" onKeyTyped="#getWhite" prefHeight="200.0" prefWidth="160.0" promptText="Gericht" />
                   <TextField fx:id="priceTueB" maxWidth="160.0" promptText="Preis" />
-                  <ImageView fx:id="picTueB" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#setPicture" pickOnBounds="true" preserveRatio="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <image>
-                        <Image url="@../image/keinBild.png" />
-                     </image></ImageView>
-                  <Button fx:id="deleteTueB" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                   <ImageView fx:id="picTueB" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#choosePicture"
+                              pickOnBounds="true" preserveRatio="true">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                       <image>
+                           <Image url="@../image/keinBild.png"/>
+                       </image>
+                   </ImageView>
+                   <Button fx:id="deleteTueB" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                   </Button>
                </children>
             </VBox>
             <VBox maxHeight="310.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <children>
                   <TextArea fx:id="txtAreaFoodWedB" maxHeight="50.0" maxWidth="160.0" onKeyTyped="#getWhite" prefHeight="200.0" prefWidth="160.0" promptText="Gericht" />
                   <TextField fx:id="priceWedB" maxWidth="160.0" promptText="Preis" />
-                  <ImageView fx:id="picWedB" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#setPicture" pickOnBounds="true" preserveRatio="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <image>
-                        <Image url="@../image/keinBild.png" />
-                     </image></ImageView>
-                  <Button fx:id="deleteWedB" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                   <ImageView fx:id="picWedB" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#choosePicture"
+                              pickOnBounds="true" preserveRatio="true">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                       <image>
+                           <Image url="@../image/keinBild.png"/>
+                       </image>
+                   </ImageView>
+                   <Button fx:id="deleteWedB" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                   </Button>
                </children>
             </VBox>
             <VBox maxHeight="310.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <children>
                   <TextArea fx:id="txtAreaFoodThuB" maxHeight="50.0" maxWidth="160.0" onKeyTyped="#getWhite" prefHeight="200.0" prefWidth="160.0" promptText="Gericht" />
                   <TextField fx:id="priceThuB" maxWidth="160.0" promptText="Preis" />
-                  <ImageView fx:id="picThuB" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#setPicture" pickOnBounds="true" preserveRatio="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <image>
-                        <Image url="@../image/keinBild.png" />
-                     </image></ImageView>
-                  <Button fx:id="deleteThuB" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                   <ImageView fx:id="picThuB" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#choosePicture"
+                              pickOnBounds="true" preserveRatio="true">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                       <image>
+                           <Image url="@../image/keinBild.png"/>
+                       </image>
+                   </ImageView>
+                   <Button fx:id="deleteThuB" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                   </Button>
                </children>
             </VBox>
             <VBox maxHeight="310.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
                <children>
                   <TextArea fx:id="txtAreaFoodFriB" maxHeight="50.0" maxWidth="160.0" onKeyTyped="#getWhite" prefHeight="200.0" prefWidth="160.0" promptText="Gericht" />
                   <TextField fx:id="priceFriB" maxWidth="160.0" promptText="Preis" />
-                  <ImageView fx:id="picFriB" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#setPicture" pickOnBounds="true" preserveRatio="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <image>
-                        <Image url="@../image/keinBild.png" />
-                     </image></ImageView>
-                  <Button fx:id="deleteFriB" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                   <ImageView fx:id="picFriB" fitHeight="150.0" fitWidth="180.0" onMouseClicked="#choosePicture"
+                              pickOnBounds="true" preserveRatio="true">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                       <image>
+                           <Image url="@../image/keinBild.png"/>
+                       </image>
+                   </ImageView>
+                   <Button fx:id="deleteFriB" mnemonicParsing="false" onAction="#deleteMenu" text="Löschen">
+                       <cursor>
+                           <Cursor fx:constant="HAND"/>
+                       </cursor>
+                   </Button>
                </children>
             </VBox>
-            <VBox maxHeight="310.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
-               <children>
-                  <Label text="Menü A" />
-               </children>
-            </VBox>
-            <VBox maxHeight="310.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
-               <children>
-                  <Label text="Menü B" />
-               </children>
-            </VBox>
+             <VBox maxHeight="310.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+                 <children>
+                     <Label text="Menü A"/>
+                 </children>
+             </VBox>
+             <VBox maxHeight="310.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+                 <children>
+                     <Label text="Menü B"/>
+                 </children>
+             </VBox>
+             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                 <children>
+                     <HBox prefHeight="100.0" prefWidth="200.0">
+                         <children>
+                             <Label alignment="CENTER" prefHeight="25.0" prefWidth="170.0" text="Montag"
+                                    textAlignment="CENTER"/>
+                             <CheckBox fx:id="freeMon" mnemonicParsing="false" selected="true"/>
+                         </children>
+                     </HBox>
+                 </children>
+             </VBox>
+             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
+                 <children>
+                     <HBox prefHeight="100.0" prefWidth="200.0">
+                         <children>
+                             <Label alignment="CENTER" prefHeight="25.0" prefWidth="170.0" text="Mittwoch"
+                                    textAlignment="CENTER"/>
+                             <CheckBox fx:id="freeWed" mnemonicParsing="false" selected="true"/>
+                         </children>
+                     </HBox>
+                 </children>
+             </VBox>
+             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
+                 <children>
+                     <Label alignment="CENTER" prefHeight="25.0" prefWidth="170.0" text="Dienstag"
+                            textAlignment="CENTER"/>
+                     <CheckBox fx:id="freeTue" mnemonicParsing="false" selected="true"/>
+                 </children>
+             </HBox>
+             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4">
+                 <children>
+                     <Label alignment="CENTER" prefHeight="25.0" prefWidth="170.0" text="Donnerstag"
+                            textAlignment="CENTER"/>
+                     <CheckBox fx:id="freeThu" mnemonicParsing="false" selected="true"/>
+                 </children>
+             </HBox>
+             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5">
+                 <children>
+                     <Label alignment="CENTER" prefHeight="25.0" prefWidth="170.0" text="Freitag"/>
+                     <CheckBox fx:id="freeFri" mnemonicParsing="false" onAction="#setHoliday" selected="true"/>
+                 </children>
+             </HBox>
          </children>
       </GridPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">

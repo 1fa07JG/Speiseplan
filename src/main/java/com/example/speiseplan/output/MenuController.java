@@ -111,6 +111,16 @@ public class MenuController {
     @FXML
     private ImageView picFriB;
     @FXML
+    private CheckBox freeMon;
+    @FXML
+    private CheckBox freeTue;
+    @FXML
+    private CheckBox freeWed;
+    @FXML
+    private CheckBox freeThu;
+    @FXML
+    private CheckBox freeFri;
+    @FXML
     private Button exit;
     @FXML
     private Label message;
@@ -124,6 +134,7 @@ public class MenuController {
     private DatePicker date;
     @FXML
     private Button verify;
+
 
     public MenuController() {
     }
@@ -155,7 +166,6 @@ public class MenuController {
         kw.setText("KW: " + calendarWeek);
     }
 
-
     @FXML
     void createPdf(ActionEvent event) throws MalformedURLException, FileNotFoundException {
         if (checkInput()) {
@@ -168,7 +178,8 @@ public class MenuController {
             //System.out.println(week.printMenu());
             producePdfMenu(week);
 
-            //write a method to get the Pdf file on week and reassign the button show preview to save the pdf
+            //write a method to get the Pdf file on week and reassign the button
+            // show preview to save the pdf
         }
 
     }
@@ -200,6 +211,7 @@ public class MenuController {
         }
     }
 
+
     //sammelt die Eingabe daten und bringt sie in ein Format, das die Logic Klassen verarbeiten können
     private Week getContent() {
         Meal monA = new Meal(txtAreaFoodMonA.getText(), getPrice(priceMonA), picturePath[0]);
@@ -227,40 +239,60 @@ public class MenuController {
         return new Week(days);
     }
 
+
     // Gibt Testdaten ein, um nicht jedes Mal Standard Testdaten einzugeben
     @FXML
-    private void setContent(ActionEvent event) {
+    private void setContent(ActionEvent event) throws FileNotFoundException {
         txtAreaFoodMonA.setText("Dampfnudel");
         priceMonA.setText("3.9");
+        setPicture("./src/main/resources/com/example/speiseplan/image/Dampfnudeln.jpg", picMonA);
         txtAreaFoodMonB.setText("Aal");
         priceMonB.setText("3.9");
+        setPicture("./src/main/resources/com/example/speiseplan/image/Aal.jpg", picMonB);
         txtAreaFoodTueA.setText("Kaiserschmarrn");
         priceTueA.setText("3.9");
+        setPicture("./src/main/resources/com/example/speiseplan/image/Kaiserschmarrn.jpg", picTueA);
         txtAreaFoodTueB.setText("Karpfen");
         priceTueB.setText("3.9");
+        setPicture("./src/main/resources/com/example/speiseplan/image/Karpfen.jpg", picTueB);
         txtAreaFoodWedA.setText("Semmelknödel");
         priceWedA.setText("3.9");
+        setPicture("./src/main/resources/com/example/speiseplan/image/Semmelknödel.jpg", picWedA);
         txtAreaFoodWedB.setText("Forelle");
         priceWedB.setText("3.9");
+        setPicture("./src/main/resources/com/example/speiseplan/image/Forelle.jpg", picWedB);
         txtAreaFoodThuA.setText("Brotzeit");
         priceThuA.setText("3.9");
+        setPicture("./src/main/resources/com/example/speiseplan/image/Brotzeit.jpg", picThuA);
         txtAreaFoodThuB.setText("Obatzter");
         priceThuB.setText("3.9");
+        setPicture("./src/main/resources/com/example/speiseplan/image/Obatzter.jpg", picThuB);
         txtAreaFoodFriA.setText("Bratkartoffeln");
         priceFriA.setText("3.9");
+        setPicture("./src/main/resources/com/example/speiseplan/image/Bratkartoffeln.jpg", picFriA);
         txtAreaFoodFriB.setText("Renke");
         priceFriB.setText("3.9");
+        setPicture("./src/main/resources/com/example/speiseplan/image/Renke.jpg", picFriB);
 
 
+    }
+
+    private void setPicture(String name, ImageView imgVw) throws FileNotFoundException {
+        picturePath[search(imgVw.getId())] = name;
+        FileInputStream input = new FileInputStream(name);
+        Image noImage = new Image(input);
+        imgVw.setImage(noImage);
     }
 
     //findet und korrigiert eingaben die das Programm nicht verarbeiten kann.
     @FXML
     boolean checkInput() {
         boolean ready = true;
-        ArrayList<TextArea> textAreas = new ArrayList<>(Arrays.asList(txtAreaFoodMonA, txtAreaFoodMonB, txtAreaFoodTueA, txtAreaFoodTueB, txtAreaFoodWedA, txtAreaFoodWedB, txtAreaFoodThuA,
+        ArrayList<TextArea> textAreas = new ArrayList<>(Arrays.asList(txtAreaFoodMonA, txtAreaFoodMonB,
+                txtAreaFoodTueA, txtAreaFoodTueB, txtAreaFoodWedA, txtAreaFoodWedB, txtAreaFoodThuA,
                 txtAreaFoodThuB, txtAreaFoodFriA, txtAreaFoodFriB));
-        ArrayList<TextField> textFields = new ArrayList<>(Arrays.asList(priceMonA, priceMonB, priceTueA, priceTueB, priceWedA, priceWedB,
+        ArrayList<TextField> textFields = new ArrayList<>(Arrays.asList(priceMonA, priceMonB, priceTueA,
+                priceTueB, priceWedA, priceWedB,
                 priceThuA, priceThuB, priceFriA, priceFriB));
         int failure = 0;
         int standardPrice = 0;
@@ -312,6 +344,61 @@ public class MenuController {
         return ready;
     }
 
+    @FXML
+    void setHoliday(ActionEvent event) throws FileNotFoundException {
+        ArrayList<String> name = new ArrayList<>(Arrays.asList("freeMon", null, "freeTue", null, "freeWedA", null, "freeThu", null, "freeFri"));
+
+
+        ArrayList<TextArea> textAreas = new ArrayList<>(Arrays.asList(txtAreaFoodMonA, txtAreaFoodMonB,
+                txtAreaFoodTueA, txtAreaFoodTueB, txtAreaFoodWedA, txtAreaFoodWedB, txtAreaFoodThuA,
+                txtAreaFoodThuB, txtAreaFoodFriA, txtAreaFoodFriB));
+        ArrayList<TextField> textFields = new ArrayList<>(Arrays.asList(priceMonA, priceMonB, priceTueA,
+                priceTueB, priceWedA, priceWedB,
+                priceThuA, priceThuB, priceFriA, priceFriB));
+        ArrayList<ImageView> ImageViews = new ArrayList<>(Arrays.asList(picMonA, picMonB, picTueA, picTueB,
+                picWedA, picWedB, picThuA
+                , picThuB, picFriA, picFriB));
+        CheckBox box = (CheckBox) event.getSource();
+
+        int index = name.indexOf(box.getId());
+        TextArea refFood = textAreas.get(index);
+        TextField refPrice = textFields.get(index);
+        ImageView refImage = ImageViews.get(index);
+        TextArea ref2Food = textAreas.get(index + 1);
+        TextField ref2Price = textFields.get(index + 1);
+        ImageView ref2Image = ImageViews.get(index + 1);
+        if (!box.isSelected()) {
+            refFood.setText("Feiertag");
+            refPrice.setText("Feiertag");
+            setPicture("./src/main/resources/com/example/speiseplan/image/Empty.jpg", refImage);
+            ref2Food.setText("Feiertag");
+            ref2Price.setText("Feiertag");
+            setPicture("./src/main/resources/com/example/speiseplan/image/Empty.jpg", ref2Image);
+            refFood.setDisable(true);
+            ref2Food.setDisable(true);
+            refPrice.setDisable(true);
+            ref2Price.setDisable(true);
+            refImage.setDisable(true);
+            ref2Image.setDisable(true);
+            System.out.println("Called handler deleteMenu()");
+        } else {
+            refFood.setText("");
+            refPrice.setText("");
+            ref2Food.setText("");
+            ref2Price.setText("");
+            refFood.setDisable(false);
+            ref2Food.setDisable(false);
+            refPrice.setDisable(false);
+            ref2Price.setDisable(false);
+            refImage.setDisable(false);
+            ref2Image.setDisable(false);
+            setPicture("./src/main/resources/com/example/speiseplan/image/keinBild.png", refImage);
+            setPicture("./src/main/resources/com/example/speiseplan/image/keinBild.png", ref2Image);
+        }
+
+
+    }
+
     private void findEmptyPicture() {
         for (int i = 0; i < picturePath.length; i++) {
 
@@ -328,7 +415,7 @@ public class MenuController {
     }
 
     @FXML
-    void setPicture(MouseEvent event) throws IOException {
+    void choosePicture(MouseEvent event) throws IOException {
         // imageChooser einfügen
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Food Picture");
@@ -339,7 +426,6 @@ public class MenuController {
         FileInputStream fileIn = new FileInputStream(selectedFile);
 
         Image image = new Image(fileIn);
-
 
         ImageView source = (ImageView) event.getSource();
 
@@ -363,11 +449,14 @@ public class MenuController {
     @FXML
     void deleteMenu(ActionEvent event) throws FileNotFoundException {
 
-        ArrayList<TextArea> textAreas = new ArrayList<>(Arrays.asList(txtAreaFoodMonA, txtAreaFoodMonB, txtAreaFoodTueA, txtAreaFoodTueB, txtAreaFoodWedA, txtAreaFoodWedB, txtAreaFoodThuA,
+        ArrayList<TextArea> textAreas = new ArrayList<>(Arrays.asList(txtAreaFoodMonA, txtAreaFoodMonB,
+                txtAreaFoodTueA, txtAreaFoodTueB, txtAreaFoodWedA, txtAreaFoodWedB, txtAreaFoodThuA,
                 txtAreaFoodThuB, txtAreaFoodFriA, txtAreaFoodFriB));
-        ArrayList<TextField> textFields = new ArrayList<>(Arrays.asList(priceMonA, priceMonB, priceTueA, priceTueB, priceWedA, priceWedB,
+        ArrayList<TextField> textFields = new ArrayList<>(Arrays.asList(priceMonA, priceMonB, priceTueA,
+                priceTueB, priceWedA, priceWedB,
                 priceThuA, priceThuB, priceFriA, priceFriB));
-        ArrayList<ImageView> ImageViews = new ArrayList<>(Arrays.asList(picMonA, picMonB, picTueA, picTueB, picWedA, picWedB, picThuA
+        ArrayList<ImageView> ImageViews = new ArrayList<>(Arrays.asList(picMonA, picMonB, picTueA, picTueB,
+                picWedA, picWedB, picThuA
                 , picThuB, picFriA, picFriB));
         Button b = (Button) event.getSource();
 
@@ -377,9 +466,7 @@ public class MenuController {
         ImageView refImage = ImageViews.get(index);
         refFood.setText("");
         refPrice.setText("");
-        FileInputStream input = new FileInputStream("src/main/resources/images/keinBild.png");
-        Image noImage = new Image(input);
-        refImage.setImage(noImage);
+        setPicture("./src/main/resources/com/example/speiseplan/image/keinBild.png", refImage);
         System.out.println("Called handler deleteMenu()");
     }
 
