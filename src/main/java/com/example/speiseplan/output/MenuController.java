@@ -173,6 +173,8 @@ public class MenuController {
     @FXML
     private Button verify;
 
+    public String[] picturePath =new String[10];
+
     @FXML
     void getWeek(ActionEvent event) {
 
@@ -203,8 +205,12 @@ public class MenuController {
     @FXML
     void createPdf(ActionEvent event) throws MalformedURLException, FileNotFoundException {
         if (checkInput()){
-
+            findEmptyPicture();
             Week week=getContent();
+            for (String s:picturePath) {
+                System.out.println(s);
+            }
+            System.out.println();
             //System.out.println(week.printMenu());
             producePdfMenu(week);
 
@@ -238,24 +244,24 @@ public class MenuController {
 
     //sammelt die Eingabe daten und Bringt sie in ein Format das die Logic Klassen verabeiten können
     private Week getContent() {
-        Meal monA =new Meal(txtAreaFoodMonA.getText(), getPrice(priceMonA),getPicture(picMonA));
-        Meal monB =new Meal(txtAreaFoodMonB.getText(), getPrice(priceMonB),getPicture(picMonB));
+        Meal monA =new Meal(txtAreaFoodMonA.getText(), getPrice(priceMonA),picturePath[0]);
+        Meal monB =new Meal(txtAreaFoodMonB.getText(), getPrice(priceMonB),picturePath[1]);
         Day mon=new Day("Monday", monA, monB);
 
-        Meal tueA =new Meal(txtAreaFoodTueA.getText(),getPrice(priceTueA),getPicture(picTueA));
-        Meal tueB =new Meal(txtAreaFoodTueB.getText(),getPrice(priceTueB),getPicture(picTueB));
+        Meal tueA =new Meal(txtAreaFoodTueA.getText(),getPrice(priceTueA),picturePath[2]);
+        Meal tueB =new Meal(txtAreaFoodTueB.getText(),getPrice(priceTueB),picturePath[3]);
         Day tue=new Day("Tuesday",tueA,tueB);
 
-        Meal wedA =new Meal(txtAreaFoodWedA.getText(),getPrice(priceWedA),getPicture(picWedA));
-        Meal wedB =new Meal(txtAreaFoodWedB.getText(),getPrice(priceWedB),getPicture(picWedB));
+        Meal wedA =new Meal(txtAreaFoodWedA.getText(),getPrice(priceWedA),picturePath[4]);
+        Meal wedB =new Meal(txtAreaFoodWedB.getText(),getPrice(priceWedB),picturePath[5]);
         Day wed=new Day("Wednesday",wedA,wedB);
 
-        Meal thuA =new Meal(txtAreaFoodThuA.getText(),getPrice(priceThuA),getPicture(picThuA));
-        Meal thuB =new Meal(txtAreaFoodThuB.getText(),getPrice(priceThuB),getPicture(picThuB));
+        Meal thuA =new Meal(txtAreaFoodThuA.getText(),getPrice(priceThuA),picturePath[6]);
+        Meal thuB =new Meal(txtAreaFoodThuB.getText(),getPrice(priceThuB),picturePath[7]);
         Day thu=new Day("Thursday",thuA,thuB);
 
-        Meal friA =new Meal(txtAreaFoodFriA.getText(),getPrice(priceFriA),getPicture(picFriA));
-        Meal friB =new Meal(txtAreaFoodFriB.getText(),getPrice(priceFriB),getPicture(picFriB));
+        Meal friA =new Meal(txtAreaFoodFriA.getText(),getPrice(priceFriA),picturePath[8]);
+        Meal friB =new Meal(txtAreaFoodFriB.getText(),getPrice(priceFriB),picturePath[9]);
         Day fri=new Day("Friday",friA,friB);
 
         Day[] days=new Day[]{mon,tue,wed,thu,fri};
@@ -308,6 +314,7 @@ public class MenuController {
         }
 
 
+
         switch ((failure)) {
             case 0 -> message.setText("");
             case 1 -> message.setText("Eine Speise hat keinen Namen ");
@@ -320,6 +327,16 @@ public class MenuController {
         }
 
         return ready;
+    }
+
+    private void findEmptyPicture() {
+        for (int i=0;i<picturePath.length;i++) {
+
+            if (picturePath[i]==null){
+                picturePath[i]="./src/main/resources/com/example/speiseplan/image/Empty.jpg";
+            }
+
+        }
     }
 
     @FXML
@@ -341,19 +358,33 @@ public class MenuController {
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
         File selectedFile = fileChooser.showOpenDialog(null);
-        FileInputStream file = new FileInputStream(selectedFile);
-        Image image = new Image(file);
+        String link="//"+selectedFile.getAbsolutePath();
+        FileInputStream fileIn = new FileInputStream(selectedFile);
+
+        Image image = new Image(fileIn);
+
 
         ImageView source = (ImageView) event.getSource();
 
+        System.out.println(link);
         source.setImage(image);
+        picturePath[search(source.getId())]=link;
     }
+
+    int search(String id){
+        id=id.replaceFirst("delete","");
+        id=id.replaceFirst("pic","");
+        id=id.replaceFirst("price","");
+        id=id.replaceFirst("txtArea","");
+        ArrayList<String> name = new ArrayList<>(Arrays.asList("MonA", "MonB", "TueA", "TueB", "WedA", "WedB"
+                , "ThuA", "ThuB", "FriA", "FriB"));
+        return name.indexOf(id);
+    }
+// folder chooser
     //Löscht ein Menü
     @FXML
     void deleteMenu(ActionEvent event) throws FileNotFoundException {
 
-        ArrayList<String> name = new ArrayList<>(Arrays.asList("deleteMonA", "deleteMonB", "deleteTueA", "deleteTueB", "deleteWedA", "deleteWedB"
-                , "deleteThuA", "deleteThuB", "deleteFriA", "deleteFriB"));
         ArrayList<TextArea> textAreas = new ArrayList<>(Arrays.asList(txtAreaFoodMonA, txtAreaFoodMonB, txtAreaFoodTueA, txtAreaFoodTueB, txtAreaFoodWedA, txtAreaFoodWedB, txtAreaFoodThuA,
                 txtAreaFoodThuB, txtAreaFoodFriA, txtAreaFoodFriB));
         ArrayList<TextField> textFields = new ArrayList<>(Arrays.asList(priceMonA, priceMonB, priceTueA, priceTueB, priceWedA, priceWedB,
@@ -361,9 +392,8 @@ public class MenuController {
         ArrayList<ImageView> ImageViews = new ArrayList<>(Arrays.asList(picMonA, picMonB, picTueA, picTueB, picWedA, picWedB, picThuA
                 , picThuB, picFriA, picFriB));
         Button b = (Button) event.getSource();
-        String id = b.getId();
 
-        int index = name.indexOf(id);
+        int index = search(b.getId());
         TextArea refFood = textAreas.get(index);
         TextField refPrice = textFields.get(index);
         ImageView refImage = ImageViews.get(index);
