@@ -13,10 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.time.LocalDate;
 import java.time.Month;
@@ -29,7 +26,7 @@ import static com.example.speiseplan.output.CreatePdfMenu.producePdfMenu;
 public class MenuController {
 
     public String[] picturePath = new String[10];
-    //TODO variable hinzufügen in der die bild Url eingetragen wird die Suchfunktion aus der Löschen Methode verwenden
+    public int kalenderWeek = -1;
     @FXML
     private Button deleteMonA;
     @FXML
@@ -127,6 +124,8 @@ public class MenuController {
     @FXML
     private Label messagePrice;
     @FXML
+    private Button openButton;
+    @FXML
     private Label kw;
     @FXML
     private GridPane grid;
@@ -163,7 +162,9 @@ public class MenuController {
         int daysCW = (date.getDayOfYear()) + umrechnung;
         int calendarWeek = daysCW / 7;
         calendarWeek++;
+        kalenderWeek = calendarWeek;
         kw.setText("KW: " + calendarWeek);
+
     }
 
     @FXML
@@ -176,7 +177,7 @@ public class MenuController {
             }
             System.out.println();
             //System.out.println(week.printMenu());
-            producePdfMenu(week);
+            producePdfMenu(week, findSavePath("pdf", "Essensplan"));
 
             //write a method to get the Pdf file on week and reassign the button
             // show preview to save the pdf
@@ -207,8 +208,14 @@ public class MenuController {
         if (checkInput()) {
             getContent();
             //write a method to get the Pdf file on week and reassign the button show preview to save the pdf
+            serializeObject(getContent(), findSavePath("dat", "Week"));
             terminate();
         }
+    }
+
+    @FXML
+    void open(ActionEvent event) throws FileNotFoundException {
+        setContent(deSerializeObject(openFile()));
     }
 
 
@@ -236,13 +243,58 @@ public class MenuController {
 
         Day[] days = new Day[]{mon, tue, wed, thu, fri};
 
-        return new Week(days);
+        return new Week(days, kalenderWeek);
+    }
+
+    public void setContent(Week week) throws FileNotFoundException {
+        txtAreaFoodMonA.setText(week.days[0].getMeals().get(0).getName());
+        priceMonA.setText(week.days[0].getMeals().get(0).getPriceString());
+        setPicture(week.days[0].getMeals().get(0).getPicture(), picMonA);
+
+        txtAreaFoodMonB.setText(week.days[0].getMeals().get(1).getName());
+        priceMonB.setText(week.days[0].getMeals().get(1).getPriceString());
+        setPicture(week.days[0].getMeals().get(1).getPicture(), picMonB);
+
+        txtAreaFoodTueA.setText(week.days[1].getMeals().get(0).getName());
+        priceTueA.setText(week.days[1].getMeals().get(0).getPriceString());
+        setPicture(week.days[1].getMeals().get(0).getPicture(), picTueA);
+
+        txtAreaFoodTueB.setText(week.days[1].getMeals().get(1).getName());
+        priceTueB.setText(week.days[1].getMeals().get(1).getPriceString());
+        setPicture(week.days[1].getMeals().get(1).getPicture(), picTueB);
+
+        txtAreaFoodWedA.setText(week.days[2].getMeals().get(0).getName());
+        priceWedA.setText(week.days[2].getMeals().get(0).getPriceString());
+        setPicture(week.days[2].getMeals().get(0).getPicture(), picWedA);
+
+        txtAreaFoodWedB.setText(week.days[2].getMeals().get(1).getName());
+        priceWedB.setText(week.days[2].getMeals().get(1).getPriceString());
+        setPicture(week.days[2].getMeals().get(1).getPicture(), picWedB);
+
+        txtAreaFoodThuA.setText(week.days[3].getMeals().get(0).getName());
+        priceThuA.setText(week.days[3].getMeals().get(0).getPriceString());
+        setPicture(week.days[3].getMeals().get(0).getPicture(), picThuA);
+
+        txtAreaFoodThuB.setText(week.days[3].getMeals().get(1).getName());
+        priceThuB.setText(week.days[3].getMeals().get(1).getPriceString());
+        setPicture(week.days[3].getMeals().get(1).getPicture(), picThuB);
+
+        txtAreaFoodFriA.setText(week.days[4].getMeals().get(0).getName());
+        priceFriA.setText(week.days[4].getMeals().get(0).getPriceString());
+        setPicture(week.days[4].getMeals().get(0).getPicture(), picFriA);
+
+        txtAreaFoodFriB.setText(week.days[4].getMeals().get(1).getName());
+        priceFriB.setText(week.days[4].getMeals().get(1).getPriceString());
+        setPicture(week.days[4].getMeals().get(1).getPicture(), picFriB);
+
+        kalenderWeek = week.getKw();
+        kw.setText("KW: " + kalenderWeek);
     }
 
 
     // Gibt Testdaten ein, um nicht jedes Mal Standard Testdaten einzugeben
     @FXML
-    private void setContent(ActionEvent event) throws FileNotFoundException {
+    private void createTestContent(ActionEvent event) throws FileNotFoundException {
         txtAreaFoodMonA.setText("Dampfnudel");
         priceMonA.setText("3.9");
         setPicture("./src/main/resources/com/example/speiseplan/image/Dampfnudeln.jpg", picMonA);
@@ -276,6 +328,7 @@ public class MenuController {
 
 
     }
+
 
     private void setPicture(String name, ImageView imgVw) throws FileNotFoundException {
         picturePath[search(imgVw.getId())] = name;
@@ -404,6 +457,26 @@ public class MenuController {
 
     }
 
+    String findSavePath(String type, String initial) {
+
+        FileChooser file = new FileChooser();
+        file.setTitle("Save add");
+        file.setInitialFileName(initial);
+        file.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Files", "*." + type));
+        File selectedFile = file.showSaveDialog(null);
+        return "//" + selectedFile.getAbsolutePath();
+    }
+
+    String openFile() {
+        FileChooser file = new FileChooser();
+        file.setTitle("Save add");
+        file.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Files", "*." + "dat"));
+        File selectedFile = file.showOpenDialog(null);
+        return "//" + selectedFile.getAbsolutePath();
+    }
+
     private void findEmptyPicture() {
         for (int i = 0; i < picturePath.length; i++) {
 
@@ -473,6 +546,41 @@ public class MenuController {
         refPrice.setText("");
         setPicture("./src/main/resources/com/example/speiseplan/image/keinBild.png", refImage);
         System.out.println("Called handler deleteMenu()");
+    }
+
+    private static void serializeObject(Week weekSerial, String path) {
+
+        FileOutputStream fos;
+        ObjectOutputStream out;
+
+        try {
+            fos = new FileOutputStream(path);
+            out = new ObjectOutputStream(fos);
+            out.writeObject(weekSerial);
+            out.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
+    private static Week deSerializeObject(String path) {
+
+        Week weekDeSerial = null;
+        FileInputStream fis;
+        ObjectInputStream in;
+        try {
+            fis = new FileInputStream(path);
+            in = new ObjectInputStream(fis);
+            weekDeSerial = (Week) in.readObject();
+            in.close();
+        } catch (IOException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        assert weekDeSerial != null;
+        weekDeSerial.printMenu();
+        return weekDeSerial;
+
     }
 
     @FXML

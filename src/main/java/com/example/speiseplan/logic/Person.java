@@ -1,6 +1,8 @@
 package com.example.speiseplan.logic;
 
-public class Person {
+import java.io.Serializable;
+
+public class Person implements Serializable {
     String surName;
     String firstName;
     double[] bill = new double[5];

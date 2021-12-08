@@ -1,8 +1,9 @@
 package com.example.speiseplan.logic;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Meal {
+public class Meal implements Serializable {
 
     String name;
     double price;
@@ -17,13 +18,13 @@ public class Meal {
         picture = pic;
     }
 
-    int countOrders() {
-        System.out.println(customers.size());
-        return customers.size();
-    }
 
     public double getPrice() {
         return price;
+    }
+
+    public String getPriceString() {
+        return String.valueOf(getPrice());
     }
 
     public void setPrice(double newPrice) {
@@ -44,6 +45,12 @@ public class Meal {
         return picture;
     }
 
+
+    int countOrders() {
+        System.out.println(customers.size());
+        return customers.size();
+    }
+
     public ArrayList<Person> getCustomers() {
 
         return customers;
@@ -62,5 +69,4 @@ public class Meal {
         }
         return affected.toString();
     }
-
 }

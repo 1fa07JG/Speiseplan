@@ -1,8 +1,9 @@
 package com.example.speiseplan.logic;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Day {
+public class Day implements Serializable {
 
     String name;
 
@@ -37,6 +38,7 @@ public class Day {
 
         return foodList;
     }
+
 
     public void order(Person customer, int index) {
         foodList.get(index).addCustomer(customer);

@@ -19,8 +19,11 @@ import java.net.MalformedURLException;
 @SuppressWarnings("ClassEscapesDefinedScope")
 public class CreatePdfMenu {
 
-    public static void producePdfMenu(Week kw) throws FileNotFoundException, MalformedURLException {
-        String dest = "./pdf/Essensplan.pdf";
+    public static void producePdfMenu(Week kw, String dest) throws FileNotFoundException, MalformedURLException {
+        if (dest.equals("")) {
+            dest = "./pdf/Essensplan.pdf";
+        }
+
         PdfWriter writer = new PdfWriter(dest);
 
         // Creating a PdfDocument

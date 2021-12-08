@@ -46,7 +46,7 @@ class PersonTest {
         friday.addMeal(lunch9);
 
         Day[] days = new Day[]{monday, tuesday, wednesday, thursday, friday};
-        workWeek = new Week(days);
+        workWeek = new Week(days, 35);
 
     }
 
@@ -103,7 +103,7 @@ class PersonTest {
     void testHoliday() {
         Holiday freeDay = new Holiday("Montag");
         Day[] freeDays = new Day[]{freeDay, tuesday, wednesday, thursday, friday};
-        Week freeWeek = new Week(freeDays);
+        Week freeWeek = new Week(freeDays, 7);
         String menuList = """
                 Essensplan:
                 Montag:

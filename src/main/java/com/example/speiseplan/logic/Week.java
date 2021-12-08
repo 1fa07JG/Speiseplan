@@ -3,22 +3,31 @@ package com.example.speiseplan.logic;
 import com.example.speiseplan.output.CreatePdfMenu;
 
 import java.io.FileNotFoundException;
+import java.io.Serializable;
 import java.net.MalformedURLException;
 
-public class Week {
+public class Week implements Serializable {
+
+    int kw;
 
     public Day[] days;
 
-    public Week(Day[] newDays) {
+    public int getKw() {
+        return kw;
+    }
+
+
+    public Week(Day[] newDays, int kalender) {
 
         days = newDays;
         for (int i = 0; i < 5; i++) {
             days[i].setWeekdayIndex(i);
         }
+        kw = kalender;
     }
 
     public void printPdf() throws MalformedURLException, FileNotFoundException {
-        CreatePdfMenu.producePdfMenu(this);
+        CreatePdfMenu.producePdfMenu(this, "./pdf/Essensplan.pdf");
     }
 
     public String printMenu() {

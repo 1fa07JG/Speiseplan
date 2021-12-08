@@ -13,7 +13,7 @@ import static com.example.speiseplan.output.CreatePdfMenu.producePdfMenu;
 class CreatePdfMenuTest {
     @Test
     void pdfTest() throws MalformedURLException, FileNotFoundException {
-        producePdfMenu(setUp());
+        producePdfMenu(setUp(), "./pdf/Essensplan.pdf");
     }
 
 
@@ -52,7 +52,7 @@ class CreatePdfMenuTest {
         friday.addMeal(lunch9);
 
         Day[] days = new Day[]{monday, tuesday, wednesday, thursday, friday};
-        workWeek = new Week(days);
+        workWeek = new Week(days, 35);
         return workWeek;
     }
 }

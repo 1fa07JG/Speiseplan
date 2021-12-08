@@ -34,5 +34,12 @@ class MealTest {
         soup.addCustomer(cesare);
     }
 
+    @Test
+    void getPriceString() {
+        Assertions.assertAll(
+                () -> Assertions.assertEquals("5.0", soup.getPriceString()),
+                () -> Assertions.assertEquals("3.9", bread.getPriceString()));
+    }
+
 
 }
