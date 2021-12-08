@@ -9,6 +9,9 @@ module com.example.speiseplan {
     opens com.example.speiseplan to javafx.fxml;
     //exports com.example.speiseplan.Playground;
 
+    exports com.example.speiseplan.logic;
+    opens com.example.speiseplan.logic to javafx.fxml;
+
     exports com.example.speiseplan.output;
     opens com.example.speiseplan.output to javafx.fxml;
 

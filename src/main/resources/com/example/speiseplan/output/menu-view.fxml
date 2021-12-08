@@ -28,9 +28,10 @@
                      <Cursor fx:constant="HAND"/>
                  </cursor>
              </DatePicker>
-             <Label fx:id="kw" layoutX="519.0" layoutY="4.0" prefHeight="29.0" prefWidth="93.0"/>
+             <Label fx:id="kw" layoutX="571.0" layoutY="2.0" prefHeight="29.0" prefWidth="41.0"/>
              <Button fx:id="verify" layoutX="919.0" layoutY="4.0" mnemonicParsing="false" onAction="#createTestContent"
                      text="Testen"/>
+             <Label layoutX="540.0" layoutY="6.0" text="KW: "/>
          </children>
       </AnchorPane>
       <GridPane fx:id="grid" alignment="CENTER" gridLinesVisible="true" maxWidth="1000.0" prefHeight="800.0" prefWidth="1000.0">
@@ -304,22 +305,22 @@
          </children>
       </GridPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <Button layoutX="812.0" layoutY="14.0" mnemonicParsing="false" onAction="#save" text="Speicheren">
-               <cursor>
-                   <Cursor fx:constant="HAND"/>
-               </cursor>
-            </Button>
-             <Button fx:id="exit" layoutX="922.0" layoutY="14.0" mnemonicParsing="false" onAction="#terminate"
-                     text="Abbrechen">
-                 <cursor>
-                     <Cursor fx:constant="HAND"/>
-                 </cursor>
-             </Button>
-             <Button layoutX="694.0" layoutY="14.0" mnemonicParsing="false" onAction="#createPdf" text="Pdf erzeugen">
-                 <cursor>
-                     <Cursor fx:constant="HAND"/>
-                 </cursor>
+          <children>
+              <Button layoutX="812.0" layoutY="14.0" mnemonicParsing="false" onAction="#save" text="Speichern">
+                  <cursor>
+                      <Cursor fx:constant="HAND"/>
+                  </cursor>
+              </Button>
+              <Button fx:id="exit" layoutX="922.0" layoutY="14.0" mnemonicParsing="false" onAction="#terminate"
+                      text="Abbrechen">
+                  <cursor>
+                      <Cursor fx:constant="HAND"/>
+                  </cursor>
+              </Button>
+              <Button layoutX="694.0" layoutY="14.0" mnemonicParsing="false" onAction="#createPdf" text="Pdf erzeugen">
+                  <cursor>
+                      <Cursor fx:constant="HAND"/>
+                  </cursor>
              </Button>
              <Button fx:id="openButton" layoutX="608.0" layoutY="14.0" mnemonicParsing="false" onAction="#open"
                      text="Öffnen"/>

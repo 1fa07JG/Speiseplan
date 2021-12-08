@@ -26,7 +26,7 @@ import static com.example.speiseplan.output.CreatePdfMenu.producePdfMenu;
 public class MenuController {
 
     public String[] picturePath = new String[10];
-    public int kalenderWeek = -1;
+    public int kalenderWeek = -1;//sollte obsolet werden kann zu fehlern führen
     @FXML
     private Button deleteMonA;
     @FXML
@@ -138,6 +138,25 @@ public class MenuController {
     public MenuController() {
     }
 
+    //methoden in eine neue Reihenfolge 1.Variablen 2. Hilfsmethoden 3.von der Gui direkt verwendete
+    // Methoden 3.1 ober rand 3.2 GridPane 3.3 unter rand
+
+    //Hilfsmethoden
+    //Output
+    //Input
+    //eingabe
+
+    double getPrice(TextField text) {
+        String s = text.getText();
+        s = s.replace(',', '.');
+        s = s.replaceAll("[\\p{L}+*~#%&$§?!@-]", "0");
+        return Double.parseDouble(s);
+    }
+
+    //Methoden Ober rand
+    //Methoden in der GridPane
+    //Methoden unter rand
+
     @FXML
     void getWeek(ActionEvent event) {
 
@@ -163,7 +182,7 @@ public class MenuController {
         int calendarWeek = daysCW / 7;
         calendarWeek++;
         kalenderWeek = calendarWeek;
-        kw.setText("KW: " + calendarWeek);
+        kw.setText(String.valueOf(calendarWeek));
 
     }
 
@@ -195,12 +214,7 @@ public class MenuController {
     }
 
 
-    double getPrice(TextField text) {
-        String s = text.getText();
-        s = s.replace(',', '.');
-        s = s.replaceAll("[\\p{L}+*~#%&$§?!@-]", "0");
-        return Double.parseDouble(s);
-    }
+
 
 
     @FXML
@@ -242,7 +256,7 @@ public class MenuController {
         Day fri = new Day("Friday", friA, friB);
 
         Day[] days = new Day[]{mon, tue, wed, thu, fri};
-
+        //Integer.getInteger(kw.getText())
         return new Week(days, kalenderWeek);
     }
 
@@ -287,8 +301,7 @@ public class MenuController {
         priceFriB.setText(week.days[4].getMeals().get(1).getPriceString());
         setPicture(week.days[4].getMeals().get(1).getPicture(), picFriB);
 
-        kalenderWeek = week.getKw();
-        kw.setText("KW: " + kalenderWeek);
+        kw.setText(String.valueOf(week.getKw()));
     }
 
 
@@ -326,7 +339,7 @@ public class MenuController {
         priceFriB.setText("3.9");
         setPicture("./src/main/resources/com/example/speiseplan/image/Renke.jpg", picFriB);
 
-
+        kw.setText(String.valueOf(35));
     }
 
 
