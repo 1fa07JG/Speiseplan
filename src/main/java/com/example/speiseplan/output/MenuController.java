@@ -138,7 +138,7 @@ public class MenuController {
     public MenuController() {
     }
 
-    //methoden in eine neue Reihenfolge 1.Variablen 2. Hilfsmethoden 3.von der Gui direkt verwendete
+    //methoden in eine neue Reihenfolge 1. Variablen 2. Hilfsmethoden 3.von der Gui direkt verwendete
     // Methoden 3.1 ober rand 3.2 GridPane 3.3 unter rand
 
     //Hilfsmethoden
