@@ -318,15 +318,20 @@ public class MenuController {
                 f.setText("3.9");
                 standardPrice++;
                 ready = false;
+                f.setText(String.valueOf(getPrice(f)));
             } else if (f.getText().equals("0.0")) {
                 f.getStylesheets().add(("/failure.css"));
                 f.setText("3.9");
                 standardPrice++;
                 ready = false;
+                f.setText(String.valueOf(getPrice(f)));
+            } else if (f.getText().equals("Feiertag")) {
+                System.out.println("called holiday");
             } else {
                 f.getStylesheets().remove("/failure.css");
+                f.setText(String.valueOf(getPrice(f)));
             }
-            f.setText(String.valueOf(getPrice(f)));
+
         }
 
 
