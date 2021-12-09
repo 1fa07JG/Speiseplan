@@ -317,12 +317,10 @@ public class MenuController {
             int[] index = new int[]{0, 2, 4, 6, 8};
             for (int i = 0; i < 5; i++) {
                 if (week.days[i].isHoliday()) {
-                    setHoliday(weekDays[i], index[i]);
                     weekDays[i].setSelected(false);
-                } else {
-
+                    setHoliday(weekDays[i], index[i]);
+                    System.out.println("called setHoliday while Loading");
                 }
-
             }
 
 
@@ -373,7 +371,13 @@ public class MenuController {
 
     private void setPicture(String name, ImageView imgVw) throws FileNotFoundException {
         picturePath[search(imgVw.getId())] = name;
-        FileInputStream input = new FileInputStream(name);
+        FileInputStream input;
+        try {
+            input = new FileInputStream(name);
+        } catch (Exception FileNotFoundException) {
+            input = new FileInputStream("./src/main/resources/com/example/speiseplan/image/keinBild.png");
+        }
+
         Image noImage = new Image(input);
         imgVw.setImage(noImage);
     }
