@@ -3,10 +3,14 @@ package com.example.speiseplan.logic;
 import com.example.speiseplan.output.CreatePdfMenu;
 
 import java.io.FileNotFoundException;
+import java.io.Serial;
 import java.io.Serializable;
 import java.net.MalformedURLException;
 
 public class Week implements Serializable {
+
+    @Serial
+    public static final long serialVersionUID = 0;
 
     int kw;
 
@@ -28,6 +32,10 @@ public class Week implements Serializable {
 
     public void printPdf() throws MalformedURLException, FileNotFoundException {
         CreatePdfMenu.producePdfMenu(this, "./pdf/Essensplan.pdf");
+    }
+
+    public long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public String printMenu() {

@@ -1,6 +1,7 @@
 package com.example.speiseplan.output;
 
 import com.example.speiseplan.logic.Day;
+import com.example.speiseplan.logic.Holiday;
 import com.example.speiseplan.logic.Meal;
 import com.example.speiseplan.logic.Week;
 import javafx.event.ActionEvent;
@@ -237,71 +238,98 @@ public class MenuController {
     private Week getContent() {
         Meal monA = new Meal(txtAreaFoodMonA.getText(), getPrice(priceMonA), picturePath[0]);
         Meal monB = new Meal(txtAreaFoodMonB.getText(), getPrice(priceMonB), picturePath[1]);
-        Day mon = new Day("Monday", monA, monB);
+        Day mon = createDay("Monday", monA, monB);
 
         Meal tueA = new Meal(txtAreaFoodTueA.getText(), getPrice(priceTueA), picturePath[2]);
         Meal tueB = new Meal(txtAreaFoodTueB.getText(), getPrice(priceTueB), picturePath[3]);
-        Day tue = new Day("Tuesday", tueA, tueB);
+        Day tue = createDay("Tuesday", tueA, tueB);
 
         Meal wedA = new Meal(txtAreaFoodWedA.getText(), getPrice(priceWedA), picturePath[4]);
         Meal wedB = new Meal(txtAreaFoodWedB.getText(), getPrice(priceWedB), picturePath[5]);
-        Day wed = new Day("Wednesday", wedA, wedB);
+        Day wed = createDay("Wednesday", wedA, wedB);
 
         Meal thuA = new Meal(txtAreaFoodThuA.getText(), getPrice(priceThuA), picturePath[6]);
         Meal thuB = new Meal(txtAreaFoodThuB.getText(), getPrice(priceThuB), picturePath[7]);
-        Day thu = new Day("Thursday", thuA, thuB);
+        Day thu = createDay("Thursday", thuA, thuB);
 
         Meal friA = new Meal(txtAreaFoodFriA.getText(), getPrice(priceFriA), picturePath[8]);
         Meal friB = new Meal(txtAreaFoodFriB.getText(), getPrice(priceFriB), picturePath[9]);
-        Day fri = new Day("Friday", friA, friB);
+        Day fri = createDay("Friday", friA, friB);
 
         Day[] days = new Day[]{mon, tue, wed, thu, fri};
         //Integer.getInteger(kw.getText())
         return new Week(days, kalenderWeek);
     }
 
+    Day createDay(String name, Meal A, Meal B) {
+        if (A.getName().equals("Feiertag")) {
+            return new Holiday(name);
+        } else {
+            return new Day(name, A, B);
+        }
+
+    }
+
     public void setContent(Week week) throws FileNotFoundException {
-        txtAreaFoodMonA.setText(week.days[0].getMeals().get(0).getName());
-        priceMonA.setText(week.days[0].getMeals().get(0).getPriceString());
-        setPicture(week.days[0].getMeals().get(0).getPicture(), picMonA);
+        if (week.getSerialVersionUID() == 0) {
+            txtAreaFoodMonA.setText(week.days[0].getMeals().get(0).getName());
+            priceMonA.setText(week.days[0].getMeals().get(0).getPriceString());
+            setPicture(week.days[0].getMeals().get(0).getPicture(), picMonA);
 
-        txtAreaFoodMonB.setText(week.days[0].getMeals().get(1).getName());
-        priceMonB.setText(week.days[0].getMeals().get(1).getPriceString());
-        setPicture(week.days[0].getMeals().get(1).getPicture(), picMonB);
+            txtAreaFoodMonB.setText(week.days[0].getMeals().get(1).getName());
+            priceMonB.setText(week.days[0].getMeals().get(1).getPriceString());
+            setPicture(week.days[0].getMeals().get(1).getPicture(), picMonB);
 
-        txtAreaFoodTueA.setText(week.days[1].getMeals().get(0).getName());
-        priceTueA.setText(week.days[1].getMeals().get(0).getPriceString());
-        setPicture(week.days[1].getMeals().get(0).getPicture(), picTueA);
+            txtAreaFoodTueA.setText(week.days[1].getMeals().get(0).getName());
+            priceTueA.setText(week.days[1].getMeals().get(0).getPriceString());
+            setPicture(week.days[1].getMeals().get(0).getPicture(), picTueA);
 
-        txtAreaFoodTueB.setText(week.days[1].getMeals().get(1).getName());
-        priceTueB.setText(week.days[1].getMeals().get(1).getPriceString());
-        setPicture(week.days[1].getMeals().get(1).getPicture(), picTueB);
+            txtAreaFoodTueB.setText(week.days[1].getMeals().get(1).getName());
+            priceTueB.setText(week.days[1].getMeals().get(1).getPriceString());
+            setPicture(week.days[1].getMeals().get(1).getPicture(), picTueB);
 
-        txtAreaFoodWedA.setText(week.days[2].getMeals().get(0).getName());
-        priceWedA.setText(week.days[2].getMeals().get(0).getPriceString());
-        setPicture(week.days[2].getMeals().get(0).getPicture(), picWedA);
+            txtAreaFoodWedA.setText(week.days[2].getMeals().get(0).getName());
+            priceWedA.setText(week.days[2].getMeals().get(0).getPriceString());
+            setPicture(week.days[2].getMeals().get(0).getPicture(), picWedA);
 
-        txtAreaFoodWedB.setText(week.days[2].getMeals().get(1).getName());
-        priceWedB.setText(week.days[2].getMeals().get(1).getPriceString());
-        setPicture(week.days[2].getMeals().get(1).getPicture(), picWedB);
+            txtAreaFoodWedB.setText(week.days[2].getMeals().get(1).getName());
+            priceWedB.setText(week.days[2].getMeals().get(1).getPriceString());
+            setPicture(week.days[2].getMeals().get(1).getPicture(), picWedB);
 
-        txtAreaFoodThuA.setText(week.days[3].getMeals().get(0).getName());
-        priceThuA.setText(week.days[3].getMeals().get(0).getPriceString());
-        setPicture(week.days[3].getMeals().get(0).getPicture(), picThuA);
+            txtAreaFoodThuA.setText(week.days[3].getMeals().get(0).getName());
+            priceThuA.setText(week.days[3].getMeals().get(0).getPriceString());
+            setPicture(week.days[3].getMeals().get(0).getPicture(), picThuA);
 
-        txtAreaFoodThuB.setText(week.days[3].getMeals().get(1).getName());
-        priceThuB.setText(week.days[3].getMeals().get(1).getPriceString());
-        setPicture(week.days[3].getMeals().get(1).getPicture(), picThuB);
+            txtAreaFoodThuB.setText(week.days[3].getMeals().get(1).getName());
+            priceThuB.setText(week.days[3].getMeals().get(1).getPriceString());
+            setPicture(week.days[3].getMeals().get(1).getPicture(), picThuB);
 
-        txtAreaFoodFriA.setText(week.days[4].getMeals().get(0).getName());
-        priceFriA.setText(week.days[4].getMeals().get(0).getPriceString());
-        setPicture(week.days[4].getMeals().get(0).getPicture(), picFriA);
+            txtAreaFoodFriA.setText(week.days[4].getMeals().get(0).getName());
+            priceFriA.setText(week.days[4].getMeals().get(0).getPriceString());
+            setPicture(week.days[4].getMeals().get(0).getPicture(), picFriA);
 
-        txtAreaFoodFriB.setText(week.days[4].getMeals().get(1).getName());
-        priceFriB.setText(week.days[4].getMeals().get(1).getPriceString());
-        setPicture(week.days[4].getMeals().get(1).getPicture(), picFriB);
+            txtAreaFoodFriB.setText(week.days[4].getMeals().get(1).getName());
+            priceFriB.setText(week.days[4].getMeals().get(1).getPriceString());
+            setPicture(week.days[4].getMeals().get(1).getPicture(), picFriB);
 
-        kw.setText(String.valueOf(week.getKw()));
+
+            CheckBox[] weekDays = new CheckBox[]{freeMon, freeTue, freeWed, freeThu, freeFri};
+            int[] index = new int[]{0, 2, 4, 6, 8};
+            for (int i = 0; i < 5; i++) {
+                if (week.days[i].isHoliday()) {
+                    setHoliday(weekDays[i], index[i]);
+                    weekDays[i].setSelected(false);
+                } else {
+
+                }
+
+            }
+
+
+            kw.setText(String.valueOf(week.getKw()));
+        } else {
+            message.setText("Die Geöffnete Datei ist veraltet");
+        }
     }
 
 
@@ -416,10 +444,19 @@ public class MenuController {
     }
 
     @FXML
-    void setHoliday(ActionEvent event) throws FileNotFoundException {
+    void determineHoliday(ActionEvent event) throws FileNotFoundException {
         ArrayList<String> name = new ArrayList<>(Arrays.asList("freeMon", null, "freeTue", null, "freeWed", null, "freeThu", null, "freeFri"));
 
 
+        CheckBox box = (CheckBox) event.getSource();
+
+        int index = name.indexOf(box.getId());
+        setHoliday(box, index);
+
+
+    }
+
+    private void setHoliday(CheckBox box, int index) throws FileNotFoundException {
         ArrayList<TextArea> textAreas = new ArrayList<>(Arrays.asList(txtAreaFoodMonA, txtAreaFoodMonB,
                 txtAreaFoodTueA, txtAreaFoodTueB, txtAreaFoodWedA, txtAreaFoodWedB, txtAreaFoodThuA,
                 txtAreaFoodThuB, txtAreaFoodFriA, txtAreaFoodFriB));
@@ -429,9 +466,6 @@ public class MenuController {
         ArrayList<ImageView> ImageViews = new ArrayList<>(Arrays.asList(picMonA, picMonB, picTueA, picTueB,
                 picWedA, picWedB, picThuA
                 , picThuB, picFriA, picFriB));
-        CheckBox box = (CheckBox) event.getSource();
-
-        int index = name.indexOf(box.getId());
         TextArea refFood = textAreas.get(index);
         TextField refPrice = textFields.get(index);
         ImageView refImage = ImageViews.get(index);
@@ -466,8 +500,6 @@ public class MenuController {
             setPicture("./src/main/resources/com/example/speiseplan/image/keinBild.png", refImage);
             setPicture("./src/main/resources/com/example/speiseplan/image/keinBild.png", ref2Image);
         }
-
-
     }
 
     String findSavePath(String type, String initial) {
@@ -482,6 +514,7 @@ public class MenuController {
     }
 
     String openFile() {
+        message.setText("");
         FileChooser file = new FileChooser();
         file.setTitle("Save add");
         file.getExtensionFilters().addAll(

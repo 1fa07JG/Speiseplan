@@ -266,7 +266,8 @@
                          <children>
                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="170.0" text="Montag"
                                     textAlignment="CENTER"/>
-                             <CheckBox fx:id="freeMon" mnemonicParsing="false" onAction="#setHoliday" selected="true"/>
+                             <CheckBox fx:id="freeMon" mnemonicParsing="false" onAction="#determineHoliday"
+                                       selected="true"/>
                          </children>
                      </HBox>
                  </children>
@@ -277,7 +278,8 @@
                          <children>
                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="170.0" text="Mittwoch"
                                     textAlignment="CENTER"/>
-                             <CheckBox fx:id="freeWed" mnemonicParsing="false" onAction="#setHoliday" selected="true"/>
+                             <CheckBox fx:id="freeWed" mnemonicParsing="false" onAction="#determineHoliday"
+                                       selected="true"/>
                          </children>
                      </HBox>
                  </children>
@@ -286,20 +288,20 @@
                  <children>
                      <Label alignment="CENTER" prefHeight="25.0" prefWidth="170.0" text="Dienstag"
                             textAlignment="CENTER"/>
-                     <CheckBox fx:id="freeTue" mnemonicParsing="false" onAction="#setHoliday" selected="true"/>
+                     <CheckBox fx:id="freeTue" mnemonicParsing="false" onAction="#determineHoliday" selected="true"/>
                  </children>
              </HBox>
              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="4">
                  <children>
                      <Label alignment="CENTER" prefHeight="25.0" prefWidth="170.0" text="Donnerstag"
                             textAlignment="CENTER"/>
-                     <CheckBox fx:id="freeThu" mnemonicParsing="false" onAction="#setHoliday" selected="true"/>
+                     <CheckBox fx:id="freeThu" mnemonicParsing="false" onAction="#determineHoliday" selected="true"/>
                  </children>
              </HBox>
              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="5">
                  <children>
                      <Label alignment="CENTER" prefHeight="25.0" prefWidth="170.0" text="Freitag"/>
-                     <CheckBox fx:id="freeFri" mnemonicParsing="false" onAction="#setHoliday" selected="true"/>
+                     <CheckBox fx:id="freeFri" mnemonicParsing="false" onAction="#determineHoliday" selected="true"/>
                  </children>
              </HBox>
          </children>

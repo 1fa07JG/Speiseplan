@@ -1,5 +1,6 @@
 package com.example.speiseplan.logic;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -37,6 +38,10 @@ public class Day implements Serializable {
     public ArrayList<Meal> getMeals() {
 
         return foodList;
+    }
+
+    public boolean isHoliday() {
+        return false;
     }
 
 
