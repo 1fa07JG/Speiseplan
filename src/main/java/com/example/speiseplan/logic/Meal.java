@@ -1,5 +1,7 @@
 package com.example.speiseplan.logic;
 
+import com.itextpdf.layout.element.Image;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 

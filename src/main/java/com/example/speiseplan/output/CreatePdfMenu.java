@@ -2,8 +2,10 @@ package com.example.speiseplan.output;
 
 import com.example.speiseplan.logic.Meal;
 import com.example.speiseplan.logic.Week;
+import com.itextpdf.io.IOException;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -13,12 +15,14 @@ import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 
-import java.io.FileNotFoundException;
-import java.net.MalformedURLException;
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.net.URL;
 
 public class CreatePdfMenu {
 
-    public static void producePdfMenu(Week kw, String dest) throws FileNotFoundException, MalformedURLException {
+    public static void producePdfMenu(Week kw, String dest) throws java.io.IOException {
         if (dest.equals("")) {
             dest = "./pdf/Essensplan.pdf";
         }
@@ -68,35 +72,52 @@ public class CreatePdfMenu {
         }
         document.add(table);
 
-
         // Closing the document
         document.close();
         System.out.println("Speiseplan erstellt");
 
     }
 
-    private static Cell createMealEntry(String name, double price, String picture) throws MalformedURLException {
+    private static Cell createMealEntry(String name, double price, String picture) throws java.io.IOException {
         Cell cell = new Cell();
 
         Paragraph beschreibung = new Paragraph(name + "\n" + price + "€");
         cell.add(beschreibung);
 
-        ImageData data;
+        Image img;
         try {
-            data = ImageDataFactory.create(picture);
-
-
+            img = scaleImage(picture);
         } catch (Exception FileNotFoundException) {
-            data = ImageDataFactory.create("./src/main/resources/com/example/speiseplan/image/Exception.jpg");
+            img = scaleImage("./src/main/resources/com/example/speiseplan/image/Exception.jpg");
+            //data = ImageDataFactory.create("./src/main/resources/com/example/speiseplan/image/Exception.jpg");
         }
-        Image img = new Image(data);
-        img = img.setWidth(180);
-        //img=img.scaleToFit(180,180);
-        System.out.println(img.getImageHeight() + "   " + img.getImageWidth());
+
+
         cell.add(img.setAutoScale(true));
 
         return cell;
 
+    }
+
+    private static com.itextpdf.layout.element.Image scaleImage(String path) throws IOException, java.io.IOException {
+
+        java.awt.Image awtImage = ImageIO.read(new URL("file:" + path));
+
+        int scaledWidth = 200;
+        int scaledHeight = awtImage.getHeight(null) / (awtImage.getWidth(null) / scaledWidth);
+
+        BufferedImage scaledAwtImage = new BufferedImage(scaledWidth, scaledHeight, BufferedImage.TYPE_INT_RGB);
+
+        Graphics2D g = scaledAwtImage.createGraphics();
+        g.drawImage(awtImage, 0, 0, scaledWidth, scaledHeight, null);
+        g.dispose();
+
+        com.itextpdf.io.source.ByteArrayOutputStream bout = new ByteArrayOutputStream();
+        ImageIO.write(scaledAwtImage, "jpeg", bout);
+        byte[] imageBytes = bout.toByteArray();
+
+        ImageData imageData = ImageDataFactory.create(imageBytes);
+        return new com.itextpdf.layout.element.Image(imageData);
     }
 
 

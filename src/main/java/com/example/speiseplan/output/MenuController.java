@@ -192,7 +192,7 @@ public class MenuController {
     }
 
     @FXML
-    void createPdf(ActionEvent event) throws MalformedURLException, FileNotFoundException {
+    void createPdf(ActionEvent event) throws IOException {
         if (checkInput()) {
             findEmptyPicture();
             Week week = getContent();

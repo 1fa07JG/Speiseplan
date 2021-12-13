@@ -6,13 +6,14 @@ import com.example.speiseplan.logic.Week;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.MalformedURLException;
 
 import static com.example.speiseplan.output.CreatePdfMenu.producePdfMenu;
 
 class CreatePdfMenuTest {
     @Test
-    void pdfTest() throws MalformedURLException, FileNotFoundException {
+    void pdfTest() throws IOException {
         producePdfMenu(setUp(), "./pdf/Essensplan.pdf");
     }
 

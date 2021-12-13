@@ -4,6 +4,7 @@ module com.example.speiseplan {
     requires kernel;
     requires layout;
     requires io;
+    requires java.desktop;
 
 
     opens com.example.speiseplan to javafx.fxml;

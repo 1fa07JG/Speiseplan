@@ -3,6 +3,7 @@ package com.example.speiseplan.logic;
 import com.example.speiseplan.output.CreatePdfMenu;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.Serial;
 import java.io.Serializable;
 import java.net.MalformedURLException;
@@ -30,7 +31,7 @@ public class Week implements Serializable {
         kw = kalender;
     }
 
-    public void printPdf() throws MalformedURLException, FileNotFoundException {
+    public void printPdf() throws IOException {
         CreatePdfMenu.producePdfMenu(this, "./pdf/Essensplan.pdf");
     }
 
