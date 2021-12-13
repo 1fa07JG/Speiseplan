@@ -23,7 +23,7 @@
    <children>
       <AnchorPane prefHeight="29.0" prefWidth="1000.0">
          <children>
-             <DatePicker fx:id="date" layoutX="629.0" onAction="#getWeek">
+             <DatePicker fx:id="date" layoutX="629.0" onAction="#readDatePicker">
                  <cursor>
                      <Cursor fx:constant="HAND"/>
                  </cursor>

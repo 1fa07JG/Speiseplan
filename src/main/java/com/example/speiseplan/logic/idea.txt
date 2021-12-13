@@ -1,0 +1,28 @@
+- Set Date for all Days
+
+Ideen aus der Gruppe
+
+- Automatisches Anzeigen der PDF-Datei, wenn diese erzeugt wurde
+-  Sicherheitsabfrage bei nicht gespeicherten Änderungen / Einträgen .setOn CloseRequest
+-  Bilder in der Speiseplan datei mit ablegen
+-  Spinner, um die Kalenderwochen zu verändern und automatisches Berechnen der Tages?
+-  Mit der Enter-Taste kommt man zum nächsten Tag
+-  Validierung der Eingabedaten setzt den Fokus auf die erste fehlerhafte Eingabe
+-  Tab-Order im Dialog: mit der Tabulator-Taste kann in Dialogen den Fokus auf „das nächste“
+  Control setzen. Im Scene Builder werden die Controls in einer Ansicht links (unter Controller,
+  in der Hierarchie) verschoben, um die Tab-Order einzustellen.
+- Sinnhaftigkeitsprüfung von Preisen z.B., wenn Preis zu groß wird, warnen oder nicht akzeptieren
+-  Größe von Bildern: bei zu großen Bilddateien diese verkleinern: Jpge-Qualität zu verringern;
+  Auflösung reduzieren; Bild 3000 x 2000 Pixel wird auf 3 cm x 3 cm gedruckt
+
+
+Heute erledigt:
+-  Beim Anlegen eines neuen Speiseplans die KW automatisch setzen ausgehend vom heutigen
+  Datum. (wenn kein Datum angeben wurde)
+
+  erledigt:
+-  Ermöglichen, dass der User auswählt, wo die PDF-Datei gespeichert wird
+-  Beim Auswählen von Bilder-Dateien nur JPG/PNG anzeigen
+-  Berechnen der Kalenderwoche auf Basis eines ausgewählten Datums
+-  Validierung der Eingabedaten gibt eine detaillierte Fehlermeldung aus
+-  Beim Eingeben von Kommazahlen sollte der Computer sowohl „.“ Als auch „,“ akzeptieren

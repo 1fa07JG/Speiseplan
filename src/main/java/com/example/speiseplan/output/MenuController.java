@@ -159,10 +159,15 @@ public class MenuController {
     //Methoden unter rand
 
     @FXML
-    void getWeek(ActionEvent event) {
+    void readDatePicker(ActionEvent event) {
 
         DatePicker datePicker = ((DatePicker) event.getSource());
         LocalDate date = datePicker.getValue();
+        getWeek(date);
+
+    }
+
+    private void getWeek(LocalDate date) {
         int umrechnung;
 
         int year = date.getYear();
@@ -184,7 +189,6 @@ public class MenuController {
         calendarWeek++;
         kalenderWeek = calendarWeek;
         kw.setText(String.valueOf(calendarWeek));
-
     }
 
     @FXML
@@ -258,6 +262,11 @@ public class MenuController {
 
         Day[] days = new Day[]{mon, tue, wed, thu, fri};
         //Integer.getInteger(kw.getText())
+        if (kalenderWeek == -1) {
+            LocalDate date = LocalDate.now();
+            getWeek(date);
+        }
+
         return new Week(days, kalenderWeek);
     }
 
@@ -368,7 +377,6 @@ public class MenuController {
         kw.setText(String.valueOf(35));
     }
 
-
     private void setPicture(String name, ImageView imgVw) throws FileNotFoundException {
         picturePath[search(imgVw.getId())] = name;
         FileInputStream input;
@@ -379,6 +387,8 @@ public class MenuController {
         }
 
         Image noImage = new Image(input);
+
+
         imgVw.setImage(noImage);
     }
 
@@ -395,8 +405,6 @@ public class MenuController {
         int failure = 0;
         int standardPrice = 0;
         for (TextArea t : textAreas) {
-
-
             if (t.getText().equals("")) {
                 t.getStylesheets().add(("/failure.css"));
 
@@ -429,10 +437,7 @@ public class MenuController {
                 f.getStylesheets().remove("/failure.css");
                 f.setText(String.valueOf(getPrice(f)));
             }
-
         }
-
-
         switch ((failure)) {
             case 0 -> message.setText("");
             case 1 -> message.setText("Eine Speise hat keinen Namen ");
@@ -443,7 +448,6 @@ public class MenuController {
             case 1 -> messagePrice.setText("Für eine Speise wurde der Preis von 3,9 € festgelegt ");
             default -> messagePrice.setText("Für " + standardPrice + " Speisen wurde der Preis fo 3,9 € festgelegt");
         }
-
         return ready;
     }
 

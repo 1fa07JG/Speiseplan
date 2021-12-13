@@ -16,7 +16,6 @@ import com.itextpdf.layout.element.Table;
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 
-@SuppressWarnings("ClassEscapesDefinedScope")
 public class CreatePdfMenu {
 
     public static void producePdfMenu(Week kw, String dest) throws FileNotFoundException, MalformedURLException {
@@ -86,10 +85,14 @@ public class CreatePdfMenu {
         try {
             data = ImageDataFactory.create(picture);
 
+
         } catch (Exception FileNotFoundException) {
             data = ImageDataFactory.create("./src/main/resources/com/example/speiseplan/image/Exception.jpg");
         }
         Image img = new Image(data);
+        img = img.setWidth(180);
+        //img=img.scaleToFit(180,180);
+        System.out.println(img.getImageHeight() + "   " + img.getImageWidth());
         cell.add(img.setAutoScale(true));
 
         return cell;
