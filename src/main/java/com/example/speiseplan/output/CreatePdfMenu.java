@@ -20,10 +20,11 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
+import java.time.LocalDate;
 
 public class CreatePdfMenu {
 
-    public static void producePdfMenu(Week kw, String dest) throws java.io.IOException {
+    public static void producePdfMenu(Week kw, String dest, LocalDate[] days) throws java.io.IOException {
         if (dest.equals("")) {
             dest = "./pdf/Essensplan.pdf";
         }
@@ -46,7 +47,7 @@ public class CreatePdfMenu {
         cell0.add(paragraph0);         // Adding content to the cell
         table.addCell(cell0);      // Adding cell to the table
 
-        String[] wochenTage = {"Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag"};
+        String[] wochenTage = {"Montag " + days[0], "Dienstag " + days[1], "Mittwoch " + days[2], "Donnerstag " + days[3], "Freitag " + days[4]};
 
 
         for (String s : wochenTage) {

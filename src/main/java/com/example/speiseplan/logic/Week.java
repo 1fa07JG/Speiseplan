@@ -1,12 +1,14 @@
 package com.example.speiseplan.logic;
 
 import com.example.speiseplan.output.CreatePdfMenu;
+import com.example.speiseplan.output.MenuController;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serial;
 import java.io.Serializable;
 import java.net.MalformedURLException;
+import java.time.LocalDate;
 
 public class Week implements Serializable {
 
@@ -32,7 +34,7 @@ public class Week implements Serializable {
     }
 
     public void printPdf() throws IOException {
-        CreatePdfMenu.producePdfMenu(this, "./pdf/Essensplan.pdf");
+        CreatePdfMenu.producePdfMenu(this, "./pdf/Essensplan.pdf", MenuController.createWeek(LocalDate.now()));
     }
 
     public long getSerialVersionUID() {

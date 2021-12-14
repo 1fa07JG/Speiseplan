@@ -1,5 +1,5 @@
-- Set Date for all Days
-- tatsächliche Kalender woche ausgeben
+
+
 
 Ideen aus der Gruppe
 
@@ -15,6 +15,8 @@ Ideen aus der Gruppe
 
 
 Heute erledigt:
+- Set Date for all Days in pdf
+- tatsächliche Kalender woche ausgeben
 - Automatisches Anzeigen der PDF-Datei, wenn diese erzeugt wurde
 -  Größe von Bildern: bei zu großen Bilddateien diese verkleinern: Jpge-Qualität zu verringern;
   Auflösung reduzieren; Bild 3000 x 2000 Pixel wird auf 3 cm x 3 cm gedruckt

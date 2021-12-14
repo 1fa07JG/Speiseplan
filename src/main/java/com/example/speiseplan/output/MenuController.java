@@ -198,6 +198,24 @@ public class MenuController {
         kw.setText(String.valueOf(calendarWeek));
     }
 
+    static LocalDate createWeekDay(LocalDate day, int factor) {
+        return LocalDate.of(day.getYear(), day.getMonth(), day.getDayOfMonth() + factor);
+    }
+
+    public static LocalDate[] createWeek(LocalDate date) {
+
+        return switch (date.getDayOfWeek()) {
+            //week = new LocalDate[5];
+            case MONDAY -> new LocalDate[]{date, createWeekDay(date, 1), createWeekDay(date, 2), createWeekDay(date, 3), createWeekDay(date, 4)};
+            case TUESDAY -> new LocalDate[]{createWeekDay(date, -1), date, createWeekDay(date, 1), createWeekDay(date, 2), createWeekDay(date, 3)};
+            case WEDNESDAY -> new LocalDate[]{createWeekDay(date, -2), createWeekDay(date, -1), date, createWeekDay(date, 1), createWeekDay(date, 2)};
+            case THURSDAY -> new LocalDate[]{createWeekDay(date, -3), createWeekDay(date, -2), createWeekDay(date, -1), date, createWeekDay(date, 1)};
+            case FRIDAY -> new LocalDate[]{createWeekDay(date, -4), createWeekDay(date, -3), createWeekDay(date, -2), createWeekDay(date, -1), date};
+            case SATURDAY -> new LocalDate[]{createWeekDay(date, -5), createWeekDay(date, -4), createWeekDay(date, -3), createWeekDay(date, -2), createWeekDay(date, -1)};
+            case SUNDAY -> new LocalDate[]{createWeekDay(date, -6), createWeekDay(date, -5), createWeekDay(date, -4), createWeekDay(date, -3), createWeekDay(date, -2)};
+        };
+    }
+
     @FXML
     void createPdf(ActionEvent event) throws IOException {
         if (checkInput()) {
@@ -208,7 +226,7 @@ public class MenuController {
             }
             System.out.println();
             //System.out.println(week.printMenu());
-            producePdfMenu(week, findSavePath("pdf", "Essensplan"));
+            producePdfMenu(week, findSavePath("pdf", "Essensplan"), createWeek(date.getValue()));
 
             //write a method to get the Pdf file on week and reassign the button
             // show preview to save the pdf
