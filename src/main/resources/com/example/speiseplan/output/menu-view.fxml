@@ -326,13 +326,13 @@
               </Button>
               <Button fx:id="openButton" layoutX="608.0" layoutY="14.0" mnemonicParsing="false" onAction="#open"
                       text="Öffnen"/>
-              <Label fx:id="message" layoutX="8.0" layoutY="18.0" prefHeight="21.0" prefWidth="226.0"
+              <Label fx:id="message" layoutX="14.0" layoutY="25.0" prefHeight="21.0" prefWidth="226.0"
                      textFill="#ba0000"/>
-              <Label fx:id="messagePrice" layoutX="240.0" layoutY="18.0" prefHeight="21.0" prefWidth="354.0"
+              <Label fx:id="messagePrice" layoutX="240.0" layoutY="4.0" prefHeight="21.0" prefWidth="354.0"
                      textFill="#ff8e00"/>
-              <Label fx:id="messageDate" layoutX="18.0" layoutY="4.0" prefHeight="21.0" prefWidth="226.0"
+              <Label fx:id="messageDate" layoutX="14.0" layoutY="4.0" prefHeight="21.0" prefWidth="226.0"
                      textFill="#ba0000"/>
-              <Label fx:id="messageOverPrice" layoutX="240.0" layoutY="8.0" prefHeight="21.0" prefWidth="354.0"
+              <Label fx:id="messageOverPrice" layoutX="240.0" layoutY="25.0" prefHeight="21.0" prefWidth="354.0"
                      textFill="#ff8e00"/>
           </children>
       </AnchorPane>

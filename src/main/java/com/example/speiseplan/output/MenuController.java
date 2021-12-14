@@ -15,7 +15,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 
 import java.io.*;
-import java.net.MalformedURLException;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -28,6 +27,7 @@ public class MenuController {
 
     public String[] picturePath = new String[10];
     public int kalenderWeek = -1;//sollte obsolet werden kann zu fehlern führen
+    public boolean dateIsSet = false;
     @FXML
     private Button deleteMonA;
     @FXML
@@ -170,6 +170,7 @@ public class MenuController {
         DatePicker datePicker = ((DatePicker) event.getSource());
         LocalDate date = datePicker.getValue();
         getWeek(date);
+        dateIsSet = true;
 
     }
 
@@ -271,7 +272,6 @@ public class MenuController {
         if (kalenderWeek == -1) {
             LocalDate date = LocalDate.now();
             getWeek(date);
-            messageDate.setText("Woche automatisch zugewiesen");
         }
 
         return new Week(days, kalenderWeek);
@@ -351,34 +351,34 @@ public class MenuController {
     @FXML
     private void createTestContent(ActionEvent event) throws FileNotFoundException {
         txtAreaFoodMonA.setText("Dampfnudel");
-        priceMonA.setText("3.9");
+        priceMonA.setText("3.90");
         setPicture("./src/main/resources/com/example/speiseplan/image/Dampfnudeln.jpg", picMonA);
         txtAreaFoodMonB.setText("Aal");
-        priceMonB.setText("3.9");
+        priceMonB.setText("3.90");
         setPicture("./src/main/resources/com/example/speiseplan/image/Aal.jpg", picMonB);
         txtAreaFoodTueA.setText("Kaiserschmarrn");
-        priceTueA.setText("3.9");
+        priceTueA.setText("3.90");
         setPicture("./src/main/resources/com/example/speiseplan/image/Kaiserschmarrn.jpg", picTueA);
         txtAreaFoodTueB.setText("Karpfen");
-        priceTueB.setText("3.9");
+        priceTueB.setText("3.90");
         setPicture("./src/main/resources/com/example/speiseplan/image/Karpfen.jpg", picTueB);
         txtAreaFoodWedA.setText("Semmelknödel");
-        priceWedA.setText("3.9");
+        priceWedA.setText("3.90");
         setPicture("./src/main/resources/com/example/speiseplan/image/Semmelknödel.jpg", picWedA);
         txtAreaFoodWedB.setText("Forelle");
-        priceWedB.setText("3.9");
+        priceWedB.setText("3.90");
         setPicture("./src/main/resources/com/example/speiseplan/image/Forelle.jpg", picWedB);
         txtAreaFoodThuA.setText("Brotzeit");
-        priceThuA.setText("3.9");
+        priceThuA.setText("3.90");
         setPicture("./src/main/resources/com/example/speiseplan/image/Brotzeit.jpg", picThuA);
         txtAreaFoodThuB.setText("Obatzter");
-        priceThuB.setText("3.9");
+        priceThuB.setText("3.90");
         setPicture("./src/main/resources/com/example/speiseplan/image/Obatzter.jpg", picThuB);
         txtAreaFoodFriA.setText("Bratkartoffeln");
-        priceFriA.setText("3.9");
+        priceFriA.setText("3.90");
         setPicture("./src/main/resources/com/example/speiseplan/image/Bratkartoffeln.jpg", picFriA);
         txtAreaFoodFriB.setText("Renke");
-        priceFriB.setText("3.9");
+        priceFriB.setText("3.90");
         setPicture("./src/main/resources/com/example/speiseplan/image/Renke.jpg", picFriB);
 
         kw.setText(String.valueOf(35));
@@ -429,13 +429,13 @@ public class MenuController {
 
             if (f.getText().equals("")) {
                 f.getStylesheets().add(("/failure.css"));
-                f.setText("3.9");
+                f.setText("3.90");
                 standardPrice++;
                 ready = false;
                 f.setText(String.valueOf(getPrice(f)));
             } else if (f.getText().equals("0.0")) {
                 f.getStylesheets().add(("/failure.css"));
-                f.setText("3.9");
+                f.setText("3.90");
                 standardPrice++;
                 ready = false;
                 f.setText(String.valueOf(getPrice(f)));
@@ -466,6 +466,9 @@ public class MenuController {
             case 0 -> messageOverPrice.setText("");
             case 1 -> messageOverPrice.setText("Bei einer Speise wurde der Preis auf 39€ heruntergesetzt");
             default -> messageOverPrice.setText("Bei " + overPrice + " Speisen wurde der Preis auf 39€ heruntergesetzt");
+        }
+        if (!dateIsSet) {
+            messageDate.setText("Woche automatisch zugewiesen");
         }
         return ready;
     }
