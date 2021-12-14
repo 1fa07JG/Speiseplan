@@ -1,6 +1,3 @@
-
-
-
 Ideen aus der Gruppe
 
 
@@ -14,7 +11,7 @@ Ideen aus der Gruppe
   in der Hierarchie) verschoben, um die Tab-Order einzustellen.
 
 
-Heute erledigt:
+erledigt am 14.12.2021:
 - Set Date for all Days in pdf
 - tatsächliche Kalender woche ausgeben
 - Automatisches Anzeigen der PDF-Datei, wenn diese erzeugt wurde
@@ -22,7 +19,7 @@ Heute erledigt:
   Auflösung reduzieren; Bild 3000 x 2000 Pixel wird auf 3 cm x 3 cm gedruckt
 - Sinnhaftigkeitsprüfung von Preisen z.B., wenn Preis zu groß wird, warnen oder nicht akzeptieren
 
-Gesteren erledigt:
+erledigt am 13.12.2021:
 -  Beim Anlegen eines neuen Speiseplans die KW automatisch setzen ausgehend vom heutigen
   Datum. (wenn kein Datum angeben wurde)
 
