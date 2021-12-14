@@ -47,7 +47,7 @@ public class CreatePdfMenu {
         cell0.add(paragraph0);         // Adding content to the cell
         table.addCell(cell0);      // Adding cell to the table
 
-        String[] wochenTage = {"Montag " + days[0], "Dienstag " + days[1], "Mittwoch " + days[2], "Donnerstag " + days[3], "Freitag " + days[4]};
+        String[] wochenTage = {"Montag " + printDate(days[0]), "Dienstag " + printDate(days[1]), "Mittwoch " + printDate(days[2]), "Donnerstag " + printDate(days[3]), "Freitag " + printDate(days[4])};
 
 
         for (String s : wochenTage) {
@@ -82,6 +82,10 @@ public class CreatePdfMenu {
 
         System.out.println("Speiseplan erstellt");
 
+    }
+
+    private static String printDate(LocalDate date) {
+        return date.getDayOfMonth() + "." + date.getMonthValue() + "." + date.getYear();
     }
 
     private static Cell createMealEntry(String name, double price, String picture) throws java.io.IOException {
