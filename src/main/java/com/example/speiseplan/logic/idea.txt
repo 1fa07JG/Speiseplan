@@ -12,11 +12,12 @@ Ideen aus der Gruppe
   Control setzen. Im Scene Builder werden die Controls in einer Ansicht links (unter Controller,
   in der Hierarchie) verschoben, um die Tab-Order einzustellen.
 - Sinnhaftigkeitsprüfung von Preisen z.B., wenn Preis zu groß wird, warnen oder nicht akzeptieren
+
+Heute erledigt:
 -  Größe von Bildern: bei zu großen Bilddateien diese verkleinern: Jpge-Qualität zu verringern;
   Auflösung reduzieren; Bild 3000 x 2000 Pixel wird auf 3 cm x 3 cm gedruckt
 
-
-Heute erledigt:
+Gesteren erledigt:
 -  Beim Anlegen eines neuen Speiseplans die KW automatisch setzen ausgehend vom heutigen
   Datum. (wenn kein Datum angeben wurde)
 

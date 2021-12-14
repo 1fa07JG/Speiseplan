@@ -435,7 +435,11 @@ public class MenuController {
                 System.out.println("called holiday");
             } else {
                 f.getStylesheets().remove("/failure.css");
-                f.setText(String.valueOf(getPrice(f)));
+                if (getPrice(f) > 50) {
+                    f.setText("39.00");
+                } else {
+                    f.setText(String.valueOf(getPrice(f)));
+                }
             }
         }
         switch ((failure)) {
