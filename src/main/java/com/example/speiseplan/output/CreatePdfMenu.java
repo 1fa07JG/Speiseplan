@@ -71,7 +71,6 @@ public class CreatePdfMenu {
             }
         }
         document.add(table);
-
         // Closing the document
         document.close();
         System.out.println("Speiseplan erstellt");
@@ -103,8 +102,12 @@ public class CreatePdfMenu {
 
         java.awt.Image awtImage = ImageIO.read(new URL("file:" + path));
 
-        int scaledWidth = 200;
-        int scaledHeight = awtImage.getHeight(null) / (awtImage.getWidth(null) / scaledWidth);
+        int orgWidth = awtImage.getWidth(null);
+        int orgHeight = awtImage.getHeight(null);
+        int scaledWidth = 180;
+        double scalingFactor = (double) orgWidth / scaledWidth;
+        int scaledHeight = (int) (orgHeight / scalingFactor);
+        System.out.println(awtImage.getHeight(null) + "   " + awtImage.getWidth(null));
 
         BufferedImage scaledAwtImage = new BufferedImage(scaledWidth, scaledHeight, BufferedImage.TYPE_INT_RGB);
 
@@ -117,6 +120,9 @@ public class CreatePdfMenu {
         byte[] imageBytes = bout.toByteArray();
 
         ImageData imageData = ImageDataFactory.create(imageBytes);
+
+        Image i = new com.itextpdf.layout.element.Image(imageData);
+        System.out.println("Height: " + i.getImageHeight() + " expected Height: " + scaledHeight + " Width: " + i.getImageWidth());
         return new com.itextpdf.layout.element.Image(imageData);
     }
 
