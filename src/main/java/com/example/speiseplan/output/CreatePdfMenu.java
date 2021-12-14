@@ -41,7 +41,7 @@ public class CreatePdfMenu {
         float[] pointColumnWidths = {150F, 150F, 150F, 150F, 150F, 150F};
         Table table = new Table(pointColumnWidths);
         Cell cell0 = new Cell();   // Creating a cell
-        String para0 = "KW 35";
+        String para0 = "KW " + kw.getKw();
         Paragraph paragraph0 = new Paragraph(para0);
         cell0.add(paragraph0);         // Adding content to the cell
         table.addCell(cell0);      // Adding cell to the table
