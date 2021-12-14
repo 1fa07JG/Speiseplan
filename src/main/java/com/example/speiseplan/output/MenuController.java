@@ -135,6 +135,12 @@ public class MenuController {
     @FXML
     private Button verify;
 
+    @FXML
+    private Label messageOverPrice;
+
+    @FXML
+    private Label messageDate;
+
 
     public MenuController() {
     }
@@ -265,6 +271,7 @@ public class MenuController {
         if (kalenderWeek == -1) {
             LocalDate date = LocalDate.now();
             getWeek(date);
+            messageDate.setText("Woche automatisch zugewiesen");
         }
 
         return new Week(days, kalenderWeek);
@@ -404,6 +411,7 @@ public class MenuController {
                 priceThuA, priceThuB, priceFriA, priceFriB));
         int failure = 0;
         int standardPrice = 0;
+        int overPrice = 0;
         for (TextArea t : textAreas) {
             if (t.getText().equals("")) {
                 t.getStylesheets().add(("/failure.css"));
@@ -437,6 +445,8 @@ public class MenuController {
                 f.getStylesheets().remove("/failure.css");
                 if (getPrice(f) > 50) {
                     f.setText("39.00");
+                    f.getStylesheets().add(("/failure.css"));
+                    overPrice++;
                 } else {
                     f.setText(String.valueOf(getPrice(f)));
                 }
@@ -450,7 +460,12 @@ public class MenuController {
         switch ((standardPrice)) {
             case 0 -> messagePrice.setText("");
             case 1 -> messagePrice.setText("Für eine Speise wurde der Preis von 3,9 € festgelegt ");
-            default -> messagePrice.setText("Für " + standardPrice + " Speisen wurde der Preis fo 3,9 € festgelegt");
+            default -> messagePrice.setText("Für " + standardPrice + " Speisen wurde der Preis von 3,9 € festgelegt");
+        }
+        switch ((overPrice)) {
+            case 0 -> messageOverPrice.setText("");
+            case 1 -> messageOverPrice.setText("Bei einer Speise wurde der Preis auf 39€ heruntergesetzt");
+            default -> messageOverPrice.setText("Bei " + overPrice + " Speisen wurde der Preis auf 39€ heruntergesetzt");
         }
         return ready;
     }
