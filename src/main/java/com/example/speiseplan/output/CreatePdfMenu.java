@@ -18,6 +18,7 @@ import com.itextpdf.layout.element.Table;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.net.URL;
 
 public class CreatePdfMenu {
@@ -73,6 +74,11 @@ public class CreatePdfMenu {
         document.add(table);
         // Closing the document
         document.close();
+
+        Desktop desktop = Desktop.getDesktop();
+        File preview = new File(dest);
+        desktop.open(preview);
+
         System.out.println("Speiseplan erstellt");
 
     }

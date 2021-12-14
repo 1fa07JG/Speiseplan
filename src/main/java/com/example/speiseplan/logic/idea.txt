@@ -1,8 +1,9 @@
 - Set Date for all Days
+- tatsächliche Kalender woche ausgeben
 
 Ideen aus der Gruppe
 
-- Automatisches Anzeigen der PDF-Datei, wenn diese erzeugt wurde
+
 -  Sicherheitsabfrage bei nicht gespeicherten Änderungen / Einträgen .setOn CloseRequest
 -  Bilder in der Speiseplan datei mit ablegen
 -  Spinner, um die Kalenderwochen zu verändern und automatisches Berechnen der Tages?
@@ -11,11 +12,13 @@ Ideen aus der Gruppe
 -  Tab-Order im Dialog: mit der Tabulator-Taste kann in Dialogen den Fokus auf „das nächste“
   Control setzen. Im Scene Builder werden die Controls in einer Ansicht links (unter Controller,
   in der Hierarchie) verschoben, um die Tab-Order einzustellen.
-- Sinnhaftigkeitsprüfung von Preisen z.B., wenn Preis zu groß wird, warnen oder nicht akzeptieren
+
 
 Heute erledigt:
+- Automatisches Anzeigen der PDF-Datei, wenn diese erzeugt wurde
 -  Größe von Bildern: bei zu großen Bilddateien diese verkleinern: Jpge-Qualität zu verringern;
   Auflösung reduzieren; Bild 3000 x 2000 Pixel wird auf 3 cm x 3 cm gedruckt
+- Sinnhaftigkeitsprüfung von Preisen z.B., wenn Preis zu groß wird, warnen oder nicht akzeptieren
 
 Gesteren erledigt:
 -  Beim Anlegen eines neuen Speiseplans die KW automatisch setzen ausgehend vom heutigen
