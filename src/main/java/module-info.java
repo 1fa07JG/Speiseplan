@@ -1,6 +1,7 @@
 module com.example.speiseplan {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.swing;
     requires kernel;
     requires layout;
     requires io;
