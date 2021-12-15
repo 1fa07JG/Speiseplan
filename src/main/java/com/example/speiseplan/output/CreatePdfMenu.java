@@ -19,7 +19,6 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.net.URL;
 import java.time.LocalDate;
 
 public class CreatePdfMenu {
@@ -39,7 +38,7 @@ public class CreatePdfMenu {
         // Adding a new page
         pdfDoc.addNewPage();
         Document document = new Document(pdfDoc);
-        float[] pointColumnWidths = {150F, 150F, 150F, 150F, 150F, 150F};
+        float[] pointColumnWidths = {80F, 150F, 150F, 150F, 150F, 150F};
         Table table = new Table(pointColumnWidths);
         Cell cell0 = new Cell();   // Creating a cell
         String para0 = "KW " + kw.getKw();
@@ -88,7 +87,7 @@ public class CreatePdfMenu {
         return date.getDayOfMonth() + "." + date.getMonthValue() + "." + date.getYear();
     }
 
-    private static Cell createMealEntry(String name, double price, String picture) throws java.io.IOException {
+    private static Cell createMealEntry(String name, double price, BufferedImage picture) throws java.io.IOException {
         Cell cell = new Cell();
 
         Paragraph beschreibung = new Paragraph(name + "\n" + price + "€");
@@ -98,8 +97,9 @@ public class CreatePdfMenu {
         try {
             img = scaleImage(picture);
         } catch (Exception FileNotFoundException) {
-            img = scaleImage("./src/main/resources/com/example/speiseplan/image/Exception.jpg");
-            //data = ImageDataFactory.create("./src/main/resources/com/example/speiseplan/image/Exception.jpg");
+            BufferedImage bufferedImage = Meal.createBufferedImage("./src/main/resources/com/example/speiseplan/image/Exception.jpg");
+            img = scaleImage(bufferedImage);
+            //data = ImageDataFactory.create();
         }
 
 
@@ -109,31 +109,13 @@ public class CreatePdfMenu {
 
     }
 
-    private static com.itextpdf.layout.element.Image scaleImage(String path) throws IOException, java.io.IOException {
-
-        java.awt.Image awtImage = ImageIO.read(new URL("file:" + path));
-
-        int orgWidth = awtImage.getWidth(null);
-        int orgHeight = awtImage.getHeight(null);
-        int scaledWidth = 180;
-        double scalingFactor = (double) orgWidth / scaledWidth;
-        int scaledHeight = (int) (orgHeight / scalingFactor);
-        System.out.println(awtImage.getHeight(null) + "   " + awtImage.getWidth(null));
-
-        BufferedImage scaledAwtImage = new BufferedImage(scaledWidth, scaledHeight, BufferedImage.TYPE_INT_RGB);
-
-        Graphics2D g = scaledAwtImage.createGraphics();
-        g.drawImage(awtImage, 0, 0, scaledWidth, scaledHeight, null);
-        g.dispose();
+    private static com.itextpdf.layout.element.Image scaleImage(BufferedImage scaledAwtImage) throws IOException, java.io.IOException {
 
         com.itextpdf.io.source.ByteArrayOutputStream bout = new ByteArrayOutputStream();
         ImageIO.write(scaledAwtImage, "jpeg", bout);
         byte[] imageBytes = bout.toByteArray();
-
         ImageData imageData = ImageDataFactory.create(imageBytes);
-
         Image i = new com.itextpdf.layout.element.Image(imageData);
-        System.out.println("Height: " + i.getImageHeight() + " expected Height: " + scaledHeight + " Width: " + i.getImageWidth());
         return new com.itextpdf.layout.element.Image(imageData);
     }
 

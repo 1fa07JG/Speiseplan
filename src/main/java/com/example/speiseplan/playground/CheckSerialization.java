@@ -10,7 +10,7 @@ public class CheckSerialization implements Serializable {
 
 
     @Serial
-    private static final long serialVersionUID = 0;
+    private static final long serialVersionUID = 1;
 
 
     // ein Wochenobjekt erzeugen

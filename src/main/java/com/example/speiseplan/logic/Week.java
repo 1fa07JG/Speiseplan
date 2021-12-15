@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class Week implements Serializable {
 
     @Serial
-    public static final long serialVersionUID = 0;
+    public static final long serialVersionUID = 1;
 
     int kw;
 

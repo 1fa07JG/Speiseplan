@@ -1,25 +1,55 @@
 package com.example.speiseplan.logic;
 
-import com.itextpdf.layout.element.Image;
+import com.itextpdf.io.source.ByteArrayOutputStream;
+import javafx.scene.image.WritableImage;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class Meal implements Serializable {
 
     String name;
     double price;
-    String picture;
+    byte[] picture;
 
     ArrayList<Person> customers = new ArrayList<>(0);
 
-    public Meal(String n, double price_, String pic) {
+    public Meal(String n, double price_, String picturePath) {
 
         name = n;
         price = price_;
-        picture = pic;
+        try {
+            picture = createBufferedImage(picturePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    public static byte[] createBufferedImage(String path) throws IOException {
+        java.awt.Image awtImage = ImageIO.read(new URL("file:" + path));
+
+        int orgWidth = awtImage.getWidth(null);
+        int orgHeight = awtImage.getHeight(null);
+        int scaledWidth = 180;
+        double scalingFactor = (double) orgWidth / scaledWidth;
+        int scaledHeight = (int) (orgHeight / scalingFactor);
+        System.out.println(awtImage.getHeight(null) + "   " + awtImage.getWidth(null));
+        BufferedImage scaledAwtImage = new BufferedImage(scaledWidth, scaledHeight, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = scaledAwtImage.createGraphics();
+        g.drawImage(awtImage, 0, 0, scaledWidth, scaledHeight, null);
+        g.dispose();
+        com.itextpdf.io.source.ByteArrayOutputStream bout = new ByteArrayOutputStream();
+        ImageIO.write(scaledAwtImage, "jpeg", bout);
+        byte[] imageBytes = bout.toByteArray();
+        return imageBytes;
+
+    }
 
     public double getPrice() {
         return price;
@@ -43,7 +73,8 @@ public class Meal implements Serializable {
         return name;
     }
 
-    public String getPicture() {
+    public BufferedImage getPicture() {
+        WritableImage image = new FileInputStream(picture);
         return picture;
     }
 

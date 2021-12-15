@@ -9,11 +9,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.Month;
@@ -305,46 +307,46 @@ public class MenuController {
     }
 
     public void setContent(Week week) throws FileNotFoundException {
-        if (week.getSerialVersionUID() == 0) {
+        if (week.getSerialVersionUID() == 1) {
             txtAreaFoodMonA.setText(week.days[0].getMeals().get(0).getName());
             priceMonA.setText(week.days[0].getMeals().get(0).getPriceString());
-            setPicture(week.days[0].getMeals().get(0).getPicture(), picMonA);
+            loadPicture(unBuffer(week.days[0].getMeals().get(0).getPicture()), picMonA);
 
             txtAreaFoodMonB.setText(week.days[0].getMeals().get(1).getName());
             priceMonB.setText(week.days[0].getMeals().get(1).getPriceString());
-            setPicture(week.days[0].getMeals().get(1).getPicture(), picMonB);
+            loadPicture(unBuffer(week.days[0].getMeals().get(1).getPicture()), picMonB);
 
             txtAreaFoodTueA.setText(week.days[1].getMeals().get(0).getName());
             priceTueA.setText(week.days[1].getMeals().get(0).getPriceString());
-            setPicture(week.days[1].getMeals().get(0).getPicture(), picTueA);
+            loadPicture(unBuffer(week.days[1].getMeals().get(0).getPicture()), picTueA);
 
             txtAreaFoodTueB.setText(week.days[1].getMeals().get(1).getName());
             priceTueB.setText(week.days[1].getMeals().get(1).getPriceString());
-            setPicture(week.days[1].getMeals().get(1).getPicture(), picTueB);
+            loadPicture(unBuffer(week.days[1].getMeals().get(1).getPicture()), picTueB);
 
             txtAreaFoodWedA.setText(week.days[2].getMeals().get(0).getName());
             priceWedA.setText(week.days[2].getMeals().get(0).getPriceString());
-            setPicture(week.days[2].getMeals().get(0).getPicture(), picWedA);
+            loadPicture(unBuffer(week.days[2].getMeals().get(0).getPicture()), picWedA);
 
             txtAreaFoodWedB.setText(week.days[2].getMeals().get(1).getName());
             priceWedB.setText(week.days[2].getMeals().get(1).getPriceString());
-            setPicture(week.days[2].getMeals().get(1).getPicture(), picWedB);
+            loadPicture(unBuffer(week.days[2].getMeals().get(1).getPicture()), picWedB);
 
             txtAreaFoodThuA.setText(week.days[3].getMeals().get(0).getName());
             priceThuA.setText(week.days[3].getMeals().get(0).getPriceString());
-            setPicture(week.days[3].getMeals().get(0).getPicture(), picThuA);
+            loadPicture(unBuffer(week.days[3].getMeals().get(0).getPicture()), picThuA);
 
             txtAreaFoodThuB.setText(week.days[3].getMeals().get(1).getName());
             priceThuB.setText(week.days[3].getMeals().get(1).getPriceString());
-            setPicture(week.days[3].getMeals().get(1).getPicture(), picThuB);
+            loadPicture(unBuffer(week.days[3].getMeals().get(1).getPicture()), picThuB);
 
             txtAreaFoodFriA.setText(week.days[4].getMeals().get(0).getName());
             priceFriA.setText(week.days[4].getMeals().get(0).getPriceString());
-            setPicture(week.days[4].getMeals().get(0).getPicture(), picFriA);
+            loadPicture(unBuffer(week.days[4].getMeals().get(0).getPicture()), picFriA);
 
             txtAreaFoodFriB.setText(week.days[4].getMeals().get(1).getName());
             priceFriB.setText(week.days[4].getMeals().get(1).getPriceString());
-            setPicture(week.days[4].getMeals().get(1).getPicture(), picFriB);
+            loadPicture(unBuffer(week.days[4].getMeals().get(1).getPicture()), picFriB);
 
 
             CheckBox[] weekDays = new CheckBox[]{freeMon, freeTue, freeWed, freeThu, freeFri};
@@ -402,6 +404,10 @@ public class MenuController {
         kw.setText(String.valueOf(35));
     }
 
+    private void loadPicture(Image image, ImageView imgVw) {
+        imgVw.setImage(image);
+    }
+
     private void setPicture(String name, ImageView imgVw) throws FileNotFoundException {
         picturePath[search(imgVw.getId())] = name;
         FileInputStream input;
@@ -413,8 +419,8 @@ public class MenuController {
 
         Image noImage = new Image(input);
 
+        loadPicture(noImage, imgVw);
 
-        imgVw.setImage(noImage);
     }
 
     //findet und korrigiert eingaben die das Programm nicht verarbeiten kann.
@@ -675,6 +681,12 @@ public class MenuController {
         weekDeSerial.printMenu();
         return weekDeSerial;
 
+    }
+
+    Image unBuffer(BufferedImage bufferd) {
+        WritableImage image;
+        image = javafx.embed.swing.SwingFXUtils.toFXImage(bufferd, null);
+        return image;
     }
 
     @FXML
