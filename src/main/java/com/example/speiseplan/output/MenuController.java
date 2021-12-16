@@ -194,7 +194,7 @@ public class MenuController {
             default -> throw new IllegalStateException("Unexpected value: " + firstDay.getDayOfWeek());
         }
         int daysCW = (date.getDayOfYear()) + umrechnung;
-        int calendarWeek = daysCW / 7;
+        int calendarWeek = (daysCW - 1) / 7;
         calendarWeek++;
         kalenderWeek = calendarWeek;
         kw.setText(String.valueOf(calendarWeek));
