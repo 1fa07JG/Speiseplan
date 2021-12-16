@@ -19,6 +19,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.time.LocalDate;
 
 public class CreatePdfMenu {
@@ -97,8 +98,10 @@ public class CreatePdfMenu {
         try {
             img = scaleImage(picture);
         } catch (Exception FileNotFoundException) {
-            BufferedImage bufferedImage = Meal.createBufferedImage("./src/main/resources/com/example/speiseplan/image/Exception.jpg");
-            img = scaleImage(bufferedImage);
+            //BufferedImage bufferedImage =MenuController.unBuffer( Meal.createBufferedImage("./src/main/resources/com/example/speiseplan/image/Exception.jpg"));
+            //FileInputStream in=new FileInputStream("./src/main/resources/com/example/speiseplan/image/Exception.jpg");
+            ImageData data = ImageDataFactory.create("./src/main/resources/com/example/speiseplan/image/Exception.jpg");
+            img = new Image(data);
             //data = ImageDataFactory.create();
         }
 
