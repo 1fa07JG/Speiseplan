@@ -12,15 +12,18 @@ import java.net.URL;
 public class SerializeImage implements Serializable {
     @Serial
     private static final long serialVersionUID = 1;
-    SerialImage img;
+    static SerialImage img;
 
 
     public static void main(String[] args) throws IOException {
-        createImage();
+        String path = "someImage.dat";
+        img = createImage();
+        serializeObject(img, path);
+        deSerializeObject(path);
     }
 
     private static SerialImage createImage() throws IOException {
-        String path = null;
+        String path = "./src/main/resources/com/example/speiseplan/image/Exception.jpg";
         Image awtImage = ImageIO.read(new URL("file:" + path));
         int orgWidth = awtImage.getWidth(null);
         int orgHeight = awtImage.getHeight(null);
@@ -40,7 +43,7 @@ public class SerializeImage implements Serializable {
         return img.getImage();
     }
 
-    private static void serializeObject(Week week, String path) {
+    private static void serializeObject(SerialImage serial, String path) {
 
         FileOutputStream fos;
         ObjectOutputStream out;
@@ -48,7 +51,7 @@ public class SerializeImage implements Serializable {
         try {
             fos = new FileOutputStream(path);
             out = new ObjectOutputStream(fos);
-            out.writeObject(week);
+            out.writeObject(serial);
             out.close();
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -58,20 +61,20 @@ public class SerializeImage implements Serializable {
 
     private static SerialImage deSerializeObject(String path) {
 
-        Week week = null;
+        SerialImage serialImage = null;
         FileInputStream fis;
         ObjectInputStream in;
         try {
             fis = new FileInputStream(path);
             in = new ObjectInputStream(fis);
-            week = (Week) in.readObject();
+            serialImage = (SerialImage) in.readObject();
             in.close();
         } catch (IOException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
-        assert week != null;
+        assert serialImage != null;
 
-        return week;
+        return serialImage;
 
     }
 
