@@ -6,7 +6,6 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.Serial;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,6 +26,7 @@ public class Meal implements Serializable {
         price = price_;
         try {
             picture = createBufferedImage(picturePath);
+            System.out.println(picturePath);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -34,6 +34,7 @@ public class Meal implements Serializable {
 
     public static SerializableImage createBufferedImage(String path) throws IOException {
         java.awt.Image awtImage = ImageIO.read(new URL("file:" + path));
+        System.out.println(path);
 
         int orgWidth = awtImage.getWidth(null);
         int orgHeight = awtImage.getHeight(null);
@@ -47,7 +48,6 @@ public class Meal implements Serializable {
         g.dispose();
         com.itextpdf.io.source.ByteArrayOutputStream bout = new ByteArrayOutputStream();
         ImageIO.write(scaledAwtImage, "jpeg", bout);
-        byte[] imageBytes = bout.toByteArray();
         return new SerializableImage(scaledAwtImage);
 
     }

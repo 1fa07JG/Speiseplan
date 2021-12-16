@@ -602,7 +602,7 @@ public class MenuController {
         File selectedFile = fileChooser.showOpenDialog(null);
         String link = "//" + selectedFile.getAbsolutePath();
         FileInputStream fileIn = new FileInputStream(selectedFile);
-
+        System.out.println(link);
         Image image = new Image(fileIn);
 
         ImageView source = (ImageView) event.getSource();
