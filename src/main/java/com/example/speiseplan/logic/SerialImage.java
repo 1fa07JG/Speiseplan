@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class SerialImage implements Serializable {
     transient BufferedImage images;
 
-    SerialImage(BufferedImage bufferd) {
+    public SerialImage(BufferedImage bufferd) {
         images = bufferd;
     }
 
