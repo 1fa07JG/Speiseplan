@@ -1,22 +1,23 @@
 package com.example.speiseplan.logic;
 
 import com.itextpdf.io.source.ByteArrayOutputStream;
-import javafx.scene.image.WritableImage;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.Serial;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 
 public class Meal implements Serializable {
 
+    public static final long serialVersionUID = Week.serialVersionUID;
+
     String name;
     double price;
-    SerialImage picture;
+    SerializableImage picture;
 
     ArrayList<Person> customers = new ArrayList<>(0);
 
@@ -31,7 +32,7 @@ public class Meal implements Serializable {
         }
     }
 
-    public static SerialImage createBufferedImage(String path) throws IOException {
+    public static SerializableImage createBufferedImage(String path) throws IOException {
         java.awt.Image awtImage = ImageIO.read(new URL("file:" + path));
 
         int orgWidth = awtImage.getWidth(null);
@@ -47,7 +48,7 @@ public class Meal implements Serializable {
         com.itextpdf.io.source.ByteArrayOutputStream bout = new ByteArrayOutputStream();
         ImageIO.write(scaledAwtImage, "jpeg", bout);
         byte[] imageBytes = bout.toByteArray();
-        return new SerialImage(scaledAwtImage);
+        return new SerializableImage(scaledAwtImage);
 
     }
 

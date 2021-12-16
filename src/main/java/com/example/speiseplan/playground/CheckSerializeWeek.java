@@ -6,12 +6,7 @@ import com.example.speiseplan.logic.Week;
 
 import java.io.*;
 
-public class CheckSerialization implements Serializable {
-
-
-    @Serial
-    private static final long serialVersionUID = 1;
-
+public class CheckSerializeWeek {
 
     // ein Wochenobjekt erzeugen
 
@@ -21,6 +16,23 @@ public class CheckSerialization implements Serializable {
 
 
     public static void main(String[] args) {
+
+        Week workWeek = createWeek();
+
+        String path = "sometime.dat";
+
+        System.out.println("Original object = " + workWeek.printMenu());
+        serializeObject(workWeek, path);
+
+        System.out.println();
+
+        Week deserializedObject = deSerializeObject(path);
+        System.out.println("Deserialized object = " + deserializedObject.printMenu());
+
+    }
+
+    private static Week createWeek() {
+
         Meal lunch0 = new Meal("Fasan im Federkleid", 6, "./src/main/resources/com/example/speiseplan/image/Fasan_im_Federkleid.jpg");
         Meal lunch1 = new Meal("Knödel in Schokoladen Soße", 8, "./src/main/resources/com/example/speiseplan/image/Marillenknoedel.jpg");
         Meal lunch2 = new Meal("Fish and Chips", 3.9, "./src/main/resources/com/example/speiseplan/image/Fish_and_Chips.jpg");
@@ -39,18 +51,7 @@ public class CheckSerialization implements Serializable {
         Day friday = new Day("Freitag", lunch8, lunch9);
         Day[] days = new Day[]{monday, tuesday, wednesday, thursday, friday};
 
-        Week workWeek = new Week(days, 35);
-
-        String path = "sometime.dat";
-
-        System.out.println("Original object = " + workWeek.printMenu());
-        serializeObject(workWeek, path);
-
-        System.out.println();
-
-        Week deserializedObject = deSerializeObject(path);
-        System.out.println("Deserialized object = " + deserializedObject.printMenu());
-
+        return new Week(days, 35);
     }
 
     private static void serializeObject(Week week, String path) {

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class Day implements Serializable {
 
+    public static final long serialVersionUID = Week.serialVersionUID;
+
     String name;
 
     ArrayList<Meal> foodList = new ArrayList<>();
