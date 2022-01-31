@@ -28,7 +28,7 @@ import static com.example.speiseplan.output.CreatePdfMenu.producePdfMenu;
 public class MenuController {
 
     public String[] picturePath = new String[10];
-    public int kalenderWeek = -1;//sollte obsolet werden kann zu fehlern führen
+    public int kalenderWeek = -1;//sollte obsolet werden kann zu fehlern f&uuml;hren
     public boolean dateIsSet = false;
     @FXML
     private Button deleteMonA;
